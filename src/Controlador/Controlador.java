@@ -38,7 +38,7 @@ import Vista.InterfazApp;
 
 public class Controlador implements ActionListener, MouseListener {
 	
-	//INTEFAZ
+	//INTEFAZZ
 	private InterfazApp vista=new InterfazApp();
 	//FUNCIONALIDAD
 	private Funcionalidad funcionalidad=new Funcionalidad();
