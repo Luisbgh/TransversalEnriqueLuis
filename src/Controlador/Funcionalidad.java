@@ -293,10 +293,9 @@ public class Funcionalidad {
 			//
 			return nuevaColaboracion;
 	}//crearColaboracionJson
-		
 	
 	//EJERCICIO 6
-	public void generarInformeCreadoresJSON(String rutaJSON, String rutaInformeJSON) throws JsonProcessingException, IOException {
+	public void generarInformeCreadoresJSON(String rutaJSON) throws JsonProcessingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode creadores = objectMapper.readTree(new File(rutaJSON));
 		
@@ -339,8 +338,49 @@ public class Funcionalidad {
 		}
 		ObjectNode rootNode=objectMapper.createObjectNode();
 		rootNode.set("Creadores", reporteCreadores);
-		objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(rutaInformeJSON), rootNode);
+		objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File("informesJSON/reporte_creadores.json"), rootNode);
 	}//FIN GENERAR INFORME CREADORES
+	
+	//EJERCICIO 7
+	public void calcularYMostrarTasaCrecimiento(String rutaJSON) throws JsonProcessingException, IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode creadores = objectMapper.readTree(new File(rutaJSON));
+		
+		for(JsonNode creador: creadores) {
+			String nombre = creador.get("nombre").asText();
+			
+			for(JsonNode plataforma : creador.get("plataformas")) {
+				String nombrePlataforma = plataforma.get("nombre").asText();
+				
+				int seguidoresEnero = 0, seguidoresFebrero = 0, seguidoresMarzo = 0;
+				
+				for(JsonNode historial : plataforma.get("historico")) {
+					LocalDate fecha = LocalDate.parse(historial.get("fecha").asText());
+					int nuevosSeguidores = historial.get("nuevos_seguidores").asInt();
+					
+					if(fecha.getYear()==2023) {
+						if(fecha.getMonthValue()==1) {
+							seguidoresEnero = seguidoresEnero + nuevosSeguidores;
+						}else if(fecha.getMonthValue()==2) {
+							seguidoresFebrero = seguidoresFebrero + nuevosSeguidores;
+						}else if(fecha.getMonthValue()==3) {
+							seguidoresMarzo = seguidoresMarzo + nuevosSeguidores;
+						}
+					}
+				}
+				
+				if(seguidoresEnero>0) {
+					int diferenciaFebrero = seguidoresFebrero - seguidoresEnero;
+					double tasaCrecimientoFebrero = (diferenciaFebrero*100) / seguidoresEnero;
+				}
+				
+				if(seguidoresFebrero > 0) {
+					int diferenciaMarzo = seguidoresMarzo - seguidoresFebrero;
+					double tasaCrecimientoMarzo = (diferenciaMarzo*100) / seguidoresFebrero;
+				}
+			}
+		}
+	}//FIN CALCULAR Y MOSTRAR TASA DE CRECIMIENTO
 	
 	//EJERCICIO 8
 	public void generarReporteColaboraciones(String rutaJSON, String rutaCSV) throws Exception {	
@@ -447,7 +487,6 @@ public class Funcionalidad {
 	}//FIN CALCULAR RESUMEN RENDIMIENTO
 	
 	//EJERCICO 12
-	
 	public void convertirColaboraciones(String rutaJSON) throws JsonProcessingException, IOException {
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -477,9 +516,7 @@ public class Funcionalidad {
 			e.printStackTrace();
 			throw e;
 		}//catch
-		
 	}//convertirColaboraciones
-	
 	
 	
 	

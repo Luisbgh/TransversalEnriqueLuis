@@ -201,13 +201,19 @@ public class InterfazApp extends JFrame {
 	public JPanel panelConversionesColaboracionesJson;
 	public JButton btnConversionColaboracionesJson;
 	public JLabel lbl_TituloGenerarColaboracionesJson;
-	public JLabel lbl_MensajeInformacionRetroalimentacion;
 	public JLabel lbitemMenuJsonGeneracionSeleccionado;
 	public JLabel lbTituloOpcionJsonCreacion;
 	public JLabel lbtituloConversionesColaboraciones;
 	public JLabel lbfondoConversionesJson;
 	public JLabel lbRetroalimentacion;
-	
+	public JPanel panel_AnalisisSeguidoresCrecimiento;
+	public JLabel lbl_FondoAnalisisSeguidores;
+	public JLabel lbtituloTasaCrecimiento;
+	public JComboBox combobox_CreadoresTasaCrecimiento;
+	public JLabel lbl_ImgYoutube;
+	public JLabel lbl_ImgTwitch;
+	public JLabel lbl_ImgTikTok;
+	public JLabel lbl_ImgInstagram;
 	
 	/**
 	 * Launch the application.
@@ -244,6 +250,53 @@ public class InterfazApp extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
+		panel_AnalisisSeguidoresCrecimiento = new JPanel();
+		panel_AnalisisSeguidoresCrecimiento.setBounds(0, 92, 1240, 587);
+		contentPane.add(panel_AnalisisSeguidoresCrecimiento);
+		panel_AnalisisSeguidoresCrecimiento.setLayout(null);
+		panel_AnalisisSeguidoresCrecimiento.setVisible(false);
+		
+		lbl_ImgInstagram = new JLabel("");
+		lbl_ImgInstagram.setBounds(531, 428, 89, 76);
+		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgInstagram);
+		lbl_ImgInstagram.setIcon((ajustarTamañoImg("img/instagram.jpeg", lbl_ImgInstagram.getWidth(), lbl_ImgInstagram.getHeight())));
+		
+		lbl_ImgTikTok = new JLabel("");
+		lbl_ImgTikTok.setBounds(531, 316, 89, 76);
+		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgTikTok);
+		lbl_ImgTikTok.setIcon((ajustarTamañoImg("img/tiktok.png", lbl_ImgTikTok.getWidth(), lbl_ImgTikTok.getHeight())));
+		
+		lbl_ImgTwitch = new JLabel("");
+		lbl_ImgTwitch.setBounds(531, 206, 89, 76);
+		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgTwitch);
+		lbl_ImgTwitch.setIcon((ajustarTamañoImg("img/Twitch.jpg", lbl_ImgTwitch.getWidth(), lbl_ImgTwitch.getHeight())));
+		
+		lbl_ImgYoutube = new JLabel("");
+		lbl_ImgYoutube.setBounds(529, 85, 89, 76);
+		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgYoutube);
+		lbl_ImgYoutube.setIcon((ajustarTamañoImg("img/youtube.png", lbl_ImgYoutube.getWidth(), lbl_ImgYoutube.getHeight())));
+		
+		lbtituloTasaCrecimiento = new JLabel("");
+		lbtituloTasaCrecimiento.setForeground(new Color(0, 0, 128));
+		lbtituloTasaCrecimiento.setFont(new Font("Segoe Print", Font.BOLD, 40));
+		lbtituloTasaCrecimiento.setBounds(10, 513, 323, 63);
+		panel_AnalisisSeguidoresCrecimiento.add(lbtituloTasaCrecimiento);
+		
+		combobox_CreadoresTasaCrecimiento = new JComboBox();
+		combobox_CreadoresTasaCrecimiento.setMaximumRowCount(3);
+		combobox_CreadoresTasaCrecimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 27));
+		combobox_CreadoresTasaCrecimiento.setBounds(10, 85, 296, 47);
+		panel_AnalisisSeguidoresCrecimiento.add(combobox_CreadoresTasaCrecimiento);
+		
+		lbl_FondoAnalisisSeguidores = new JLabel("");
+		lbl_FondoAnalisisSeguidores.setBounds(0, 0, 1240, 587);
+		panel_AnalisisSeguidoresCrecimiento.add(lbl_FondoAnalisisSeguidores);
+		lbl_FondoAnalisisSeguidores.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbl_FondoAnalisisSeguidores.getWidth(), lbl_FondoAnalisisSeguidores.getHeight()));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(709, 33, 46, 14);
+		panel_AnalisisSeguidoresCrecimiento.add(lblNewLabel);
+		
 		panelCreacionesJson = new Panel();
 		panelCreacionesJson.setBounds(0, 92, 1240, 587);
 		contentPane.add(panelCreacionesJson);
@@ -279,13 +332,13 @@ public class InterfazApp extends JFrame {
 		btnGenerarInformeJsonRendimiento.setForeground(Color.WHITE);
 		btnGenerarInformeJsonRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 36));
 		btnGenerarInformeJsonRendimiento.setBackground(new Color(70, 130, 180));
-		btnGenerarInformeJsonRendimiento.setBounds(10, 177, 514, 114);
+		btnGenerarInformeJsonRendimiento.setBounds(160, 173, 514, 114);
 		panel_CreacionResumenDeRendimiento.add(btnGenerarInformeJsonRendimiento);
 		
 		lbl_TituloGenerarInformeRendimiento = new JLabel("¡GENERA EL INFORME DE JSON DE RENDIMIENTO!");
 		lbl_TituloGenerarInformeRendimiento.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_TituloGenerarInformeRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
-		lbl_TituloGenerarInformeRendimiento.setBounds(-11, 44, 723, 64);
+		lbl_TituloGenerarInformeRendimiento.setBounds(53, 49, 723, 64);
 		panel_CreacionResumenDeRendimiento.add(lbl_TituloGenerarInformeRendimiento);
 		
 		lbl_MensajeInformacionUsuarioRendimiento = new JLabel("");
@@ -294,13 +347,6 @@ public class InterfazApp extends JFrame {
 		lbl_MensajeInformacionUsuarioRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 		lbl_MensajeInformacionUsuarioRendimiento.setBounds(173, 329, 480, 87);
 		panel_CreacionResumenDeRendimiento.add(lbl_MensajeInformacionUsuarioRendimiento);
-		
-		lbl_MensajeInformacionRetroalimentacion = new JLabel("");
-		lbl_MensajeInformacionRetroalimentacion.setBounds(-90, 358, 480, 87);
-		panel_CreacionResumenDeRendimiento.add(lbl_MensajeInformacionRetroalimentacion);
-		lbl_MensajeInformacionRetroalimentacion.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_MensajeInformacionRetroalimentacion.setForeground(new Color(46, 139, 87));
-		lbl_MensajeInformacionRetroalimentacion.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 		
 		panelNuevaColaboracion = new Panel();
 		panelNuevaColaboracion.setBounds(10, 8, 811, 487);
@@ -1215,7 +1261,6 @@ public class InterfazApp extends JFrame {
 		lbfondoConversionesJson.setBounds(0, 0, 1240, 587);
 		panelConversionesColaboracionesJson.add(lbfondoConversionesJson);
 		lbfondoConversionesJson.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoConversionesJson.getWidth(), lbfondoConversionesJson.getHeight()));
-		
 		
 	}//InterfazApp CONSTRUCTOR
 	

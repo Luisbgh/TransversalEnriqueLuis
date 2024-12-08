@@ -81,6 +81,7 @@ public class Controlador implements ActionListener, MouseListener {
         this.vista.btnGenerarInformeJsonRendimiento.addActionListener(this);
         this.vista.itemConversionesJson.addActionListener(this);
         this.vista.btnConversionColaboracionesJson.addActionListener(this);
+        this.vista.itemAnalisisCrecimiento.addActionListener(this);
         //MOUSE LISTENERS
         this.vista.listColaboraciones.addMouseListener(this);
         this.vista.listPlataformas.addMouseListener(this);
@@ -101,6 +102,8 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.lblItemSeleccionado.setText(vista.itemDatos.getText());
 			vista.combobox_CreadoresContenido.setSelectedIndex(0);
+			vista.lbRetroalimentacion.setText("");
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 		}///ITEM DATOS
 		if(e.getSource()==vista.combobox_CreadoresContenido) {
 			if(vista.combobox_CreadoresContenido.getSelectedIndex()==0) {
@@ -225,17 +228,17 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelConversionesColaboracionesJson.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(true);
 			vista.lblItemSeleccionadoColaboracionesCsv.setText(vista.itemColaboracionesCsv.getText());
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 		}///ITEM DATOS
 		
 		if(e.getSource()==vista.btn_ReportarColaboracionesCSV) {
-			String ruta="exportacionesCSV/reporteColaboraciones.csv";
-			File archivo=new File(ruta);
+			File archivo=new File("exportacionesCSV/reporteColaboraciones.csv");
 			if(archivo.exists()) {
 				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("EL FICHERO YA EXISTE");
 				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(Color.RED);
 			}else {
 				try {
-					funcionalidad.generarReporteColaboraciones("files/creadores.json", ruta);
+					funcionalidad.generarReporteColaboraciones("files/creadores.json", "exportacionesCSV/reporteColaboraciones.csv");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}//catch
@@ -257,6 +260,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelConversionesColaboracionesJson.setVisible(false);
 			vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
 			vista.comboBox_menuGeneracionJson.setSelectedIndex(0);
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 			setearCampos();
 		}//if
 		
@@ -270,11 +274,13 @@ public class Controlador implements ActionListener, MouseListener {
 				vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 				vista.lbl_MensajeInformacionUsuarioRendimiento.setText("");
 				vista.lbl_MensajeInformacionUsuario.setText("");
+				vista.lbRetroalimentacion.setText("");
 				vista.panelConversionesColaboracionesJson.setVisible(false);
 				vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
 			}else {
 				vista.lbl_MensajeInformacionUsuarioRendimiento.setText("");
 				vista.lbl_MensajeInformacionUsuario.setText("");
+				vista.lbRetroalimentacion.setText("");
 				vista.panelConversionesColaboracionesJson.setVisible(false);
 				if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==1) {
 					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
@@ -307,7 +313,6 @@ public class Controlador implements ActionListener, MouseListener {
 			if(!vista.textFieldFechaFinal.getText().isBlank() && !vista.textFieldFechaInicio.getText().isBlank() &&
 				!vista.textFieldTematica.getText().isBlank() && !vista.textFieldTipo.getText().isBlank() && 
 				(vista.rdbtnActivo.isSelected() || vista.rdbtnInactivo.isSelected())) {
-				//
 					if(vista.comboBoxCreador.getSelectedIndex()==vista.comboBoxColadoborador.getSelectedIndex()) {
 						vista.lbmensajeRetroalimentacion.setForeground(Color.RED);
 						vista.lbmensajeRetroalimentacion.setText("ERROR, MISMO COLABORADOR");
@@ -340,14 +345,13 @@ public class Controlador implements ActionListener, MouseListener {
 		
 		//BOTON INFORME JSON
 		if(e.getSource()==vista.btnGenerarInformeJson) {
-			String ruta="informesJSON/reporte_creadores.json";
-			File archivo=new File(ruta);
+			File archivo=new File("informesJSON/reporte_creadores.json");
 			if(archivo.exists()) {
 				vista.lbl_MensajeInformacionUsuario.setText("EL FICHERO YA EXISTE");
 				vista.lbl_MensajeInformacionUsuario.setForeground(Color.RED);
 			}else {
 				try {
-					funcionalidad.generarInformeCreadoresJSON("files/creadores.json", ruta);
+					funcionalidad.generarInformeCreadoresJSON("files/creadores.json");
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -365,6 +369,8 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelAnalisisRendimiento.setVisible(true);
 			vista.panelCreacionesJson.setVisible(false);
 			vista.panelConversionesColaboracionesJson.setVisible(false);
+			vista.lbRetroalimentacion.setText("");
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 			//centrarLista
 			DefaultListCellRenderer renderer = (DefaultListCellRenderer) vista.listPlataformas.getCellRenderer();
 			renderer.setHorizontalAlignment(JLabel.CENTER);
@@ -398,6 +404,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelCreacionesJson.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(false);
 			vista.panelAnalisisRendimiento.setVisible(false);
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 		}//if
 		
 		if(e.getSource()==vista.btnConversionColaboracionesJson) {
@@ -417,17 +424,31 @@ public class Controlador implements ActionListener, MouseListener {
 			}//else
 		}//if
 		
+		if(e.getSource()==vista.itemAnalisisCrecimiento) {
+			vista.lbtituloTasaCrecimiento.setText(vista.itemAnalisisCrecimiento.getText());
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(true);
+			vista.panelCreacionesJson.setVisible(false);
+			vista.panelBodyPagina.setVisible(false);
+			vista.panelInformacionCreadores.setVisible(false);
+			vista.panelCreacionesJson.setVisible(false);
+			vista.panelColaboracionesCsv.setVisible(false);
+			vista.panelAnalisisRendimiento.setVisible(false);
+			vista.panelConversionesColaboracionesJson.setVisible(false);
+		}
+		
 	}//ACTION PERFORMED
 	
 	//METODO CARGAR COMBOBOX NOMBRE CREADORES CONTENIDO
 	public void rellenarComboboxCreadoresContenido() throws JsonProcessingException, IOException {
 			creadores = funcionalidad.obtenerListaCreadores("files/creadores.json");
 			vista.combobox_CreadoresContenido.addItem("Elige un creador");
+			vista.combobox_CreadoresTasaCrecimiento.addItem("Elige un creador");
 			
 			for(JsonNode creador:creadores) {
 				vista.combobox_CreadoresContenido.addItem(creador.get("id").asInt() + " - " +  creador.get("nombre").asText());
 				vista.comboBoxCreador.addItem(creador.get("id").asInt() + " - " +  creador.get("nombre").asText());
 				vista.comboBoxColadoborador.addItem(creador.get("id").asInt() + " - " +  creador.get("nombre").asText());
+				vista.combobox_CreadoresTasaCrecimiento.addItem(creador.get("id").asInt() + " - " +  creador.get("nombre").asText());
 			}//for
 			
 		}//RELLENAR COMBOBOX CREADORES DE CONTENIDO
