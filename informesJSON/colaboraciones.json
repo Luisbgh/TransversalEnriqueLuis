@@ -1,0 +1,626 @@
+{
+  "Colaboraciones" : [ {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Lucia Garcia",
+    "tematica" : "Piscina",
+    "fecha_inicio" : "3-3-3",
+    "fecha_fin" : "7-7-7",
+    "tipo" : "Al aire libre",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Marta Sanchez",
+    "tematica" : "ejemplo",
+    "fecha_inicio" : "1-1-1",
+    "fecha_fin" : "1-1-2",
+    "tipo" : "ejemplo",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Marta Sanchez",
+    "tematica" : "a",
+    "fecha_inicio" : "a",
+    "fecha_fin" : "a",
+    "tipo" : "a",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "a",
+    "fecha_inicio" : "a",
+    "fecha_fin" : "a",
+    "tipo" : "a",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "a",
+    "fecha_inicio" : "a",
+    "fecha_fin" : "a",
+    "tipo" : "aa",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Lucia Garcia",
+    "tematica" : "aa",
+    "fecha_inicio" : "a",
+    "fecha_fin" : "a",
+    "tipo" : "a",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "Q",
+    "fecha_inicio" : "FASD",
+    "fecha_fin" : "AFSD",
+    "tipo" : "SDF",
+    "estado" : "Nueva"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-08-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-08-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-08-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-09-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-03-01",
+    "fecha_fin" : "2023-09-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-08-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Pedro Gonzalez",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-02-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Fitness",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-01-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Elena Perez",
+    "tematica" : "Moda",
+    "fecha_inicio" : "2023-06-01",
+    "fecha_fin" : "2023-03-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-07-01",
+    "fecha_fin" : "2023-06-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Juan Garcia",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-05-01",
+    "fecha_fin" : "2023-04-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Cocina",
+    "fecha_inicio" : "2023-04-01",
+    "fecha_fin" : "2023-01-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Luis Blanco",
+    "tematica" : "Videojuegos",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-07-30",
+    "tipo" : "Colaboracion natural",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Sofia Martin",
+    "tematica" : "Tecnologia",
+    "fecha_inicio" : "2023-02-01",
+    "fecha_fin" : "2023-05-30",
+    "tipo" : "Patrocinado",
+    "estado" : "Activa"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "a",
+    "fecha_inicio" : "asdf",
+    "fecha_fin" : "asdf",
+    "tipo" : "asdf",
+    "estado" : "Nueva"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "Patinaje",
+    "fecha_inicio" : "12-12-11",
+    "fecha_fin" : "12-12-12",
+    "tipo" : "Interactiva",
+    "estado" : "Nueva"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "Futbol",
+    "fecha_inicio" : "1-1-1",
+    "fecha_fin" : "2-2-2",
+    "tipo" : "Activa",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "Stream",
+    "fecha_inicio" : "4-4-4",
+    "fecha_fin" : "5-5-5-",
+    "tipo" : "Stream",
+    "estado" : "Finalizada"
+  }, {
+    "colaboracion" : "Carlos Ruiz",
+    "tematica" : "Basket",
+    "fecha_inicio" : "1-1-1",
+    "fecha_fin" : "2-2-2",
+    "tipo" : "Stream",
+    "estado" : "Finalizada"
+  } ]
+}
