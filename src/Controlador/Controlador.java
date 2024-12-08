@@ -78,6 +78,7 @@ public class Controlador implements ActionListener, MouseListener {
         this.vista.btnCrearColaboracion.addActionListener(this);
         this.vista.btnGenerarInformeJson.addActionListener(this);
         this.vista.itemAnalisis.addActionListener(this);
+        this.vista.btnGenerarInformeJsonRendimiento.addActionListener(this);
         //MOUSE LISTENERS
         this.vista.listColaboraciones.addMouseListener(this);
         this.vista.listPlataformas.addMouseListener(this);
@@ -96,6 +97,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelColaboracionesCsv.setVisible(false);
 			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.lblItemSeleccionado.setText(vista.itemDatos.getText());
+			vista.combobox_CreadoresContenido.setSelectedIndex(0);
 		}///ITEM DATOS
 		if(e.getSource()==vista.combobox_CreadoresContenido) {
 			if(vista.combobox_CreadoresContenido.getSelectedIndex()==0) {
@@ -246,6 +248,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.panelCreacionesJson.setVisible(true);
 			vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
+			vista.comboBox_menuGeneracionJson.setSelectedIndex(0);
 		}//if
 		
 		if(e.getSource()==vista.comboBox_menuGeneracionJson) {
@@ -254,6 +257,7 @@ public class Controlador implements ActionListener, MouseListener {
 				vista.panelAnalisisRendimiento.setVisible(false);
 				vista.panelCreacionColaboracionJson.setVisible(false);
 				vista.panel_CreacionInforme.setVisible(false);
+				vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 				vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
 			}else {
 				if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==1) {
@@ -263,6 +267,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.panelCreacionColaboracionJson.setVisible(true);
 					vista.panel_CreacionInforme.setVisible(false);
+					vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 				}else if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==2){
 					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
 					vista.panelCreacionesJson.setVisible(true);
@@ -270,15 +275,14 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panelCreacionColaboracionJson.setVisible(true);
 					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.panelNuevaColaboracion.setVisible(false);
+					vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 				}else if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==3){
 					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
+					vista.panelCreacionColaboracionJson.setVisible(true);
 					vista.panel_CreacionInforme.setVisible(false);
-					vista.panelCreacionColaboracionJson.setVisible(false);
-				}else {
-					vista.panelCreacionesJson.setVisible(false);
-					vista.panelAnalisisRendimiento.setVisible(false);
-					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
-				}//else
+					vista.panelNuevaColaboracion.setVisible(true);
+					vista.panel_CreacionResumenDeRendimiento.setVisible(true);
+				}
 			}//else
 		}//COMBOBOX MENU GENERACION JSON
 		
@@ -350,6 +354,24 @@ public class Controlador implements ActionListener, MouseListener {
 			//RELLENAR LISTA
 			rellenarListaPlataformas();
 		}//if
+		
+		if(e.getSource()==vista.btnGenerarInformeJsonRendimiento) {
+			File archivo = new File("informesJSON/resumen_rendimiento_creadores.json");
+			
+			if(archivo.exists()) {
+				vista.lbl_MensajeInformacionUsuarioRendimiento.setText("EL FICHERO YA EXISTE");
+				vista.lbl_MensajeInformacionUsuarioRendimiento.setForeground(Color.RED);
+			}else {
+				try {
+					funcionalidad.calcularResumenRendimiento("files/creadores.json");
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				vista.lbl_MensajeInformacionUsuarioRendimiento.setText("INFORME JSON DE RENDIMIENTO CREADO");
+				vista.lbl_MensajeInformacionUsuarioRendimiento.setForeground(new Color(46, 139, 87));
+			}
+			
+		}
 		
 	}//ACTION PERFORMED
 	
@@ -445,9 +467,9 @@ public class Controlador implements ActionListener, MouseListener {
 		vista.table_InformacionMetricas.setModel(modeloTabla);
 		
 		TableColumnModel modeloColumnas = vista.table_InformacionMetricas.getColumnModel();
-		modeloColumnas.getColumn(0).setPreferredWidth(100);
-		modeloColumnas.getColumn(1).setPreferredWidth(110);
-		modeloColumnas.getColumn(2).setPreferredWidth(130);
+		modeloColumnas.getColumn(0).setPreferredWidth(130);
+		modeloColumnas.getColumn(1).setPreferredWidth(75);
+		modeloColumnas.getColumn(2).setPreferredWidth(140);
 		modeloColumnas.getColumn(3).setPreferredWidth(80);
 		modeloColumnas.getColumn(4).setPreferredWidth(75);
 		modeloColumnas.getColumn(5).setPreferredWidth(80);

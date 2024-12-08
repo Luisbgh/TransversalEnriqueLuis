@@ -184,7 +184,6 @@ public class InterfazApp extends JFrame {
 	public JLabel lbl_TituloGenerarInforme;
 	public JLabel lbl_MensajeInformacionUsuario;
 	public Panel panelAnalisisRendimiento;
-	public JLabel label;
 	public JLabel lbfondoAnalisisRendimiento;
 	public JLabel lblAnalisisDeRendimiento;
 	public JMenuItem itemAnalisis;
@@ -197,6 +196,11 @@ public class InterfazApp extends JFrame {
 	public JLabel lbPlataformaFoto;
 	public JLabel lblRendimiento;
 	public JSeparator separator_9;
+	public JPanel panel_CreacionResumenDeRendimiento;
+	public JButton btnGenerarInformeJsonRendimiento;
+	public JLabel lbl_TituloGenerarInformeRendimiento;
+	public JLabel lbl_MensajeInformacionUsuarioRendimiento;
+	
 	
 	/**
 	 * Launch the application.
@@ -233,72 +237,6 @@ public class InterfazApp extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		panelAnalisisRendimiento = new Panel();
-		panelAnalisisRendimiento.setBounds(0, 92, 1240, 587);
-		contentPane.add(panelAnalisisRendimiento);
-		panelAnalisisRendimiento.setVisible(false);
-		panelAnalisisRendimiento.setLayout(null);
-		
-		panelContenedor = new JPanel();
-		panelContenedor.setBounds(109, 93, 1017, 353);
-		panelAnalisisRendimiento.add(panelContenedor);
-		panelContenedor.setVisible(true);
-		panelContenedor.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
-		panelContenedor.setLayout(null);
-		
-		listPlataformas = new JList();
-		listPlataformas.setBounds(42, 128, 158, 169);
-		listPlataformas.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		listPlataformas.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
-		panelContenedor.add(listPlataformas);
-		
-		separator_8 = new JSeparator();
-		separator_8.setBounds(42, 102, 158, 2);
-		panelContenedor.add(separator_8);
-		separator_8.setForeground(new Color(255, 255, 255));
-		
-		lbTituloAnalisis = new JLabel("Plataformas");
-		lbTituloAnalisis.setBounds(49, 55, 151, 36);
-		panelContenedor.add(lbTituloAnalisis);
-		lbTituloAnalisis.setForeground(new Color(0, 0, 128));
-		lbTituloAnalisis.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		
-		listRendimiento = new JList();
-		listRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		listRendimiento.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
-		listRendimiento.setBounds(617, 128, 364, 169);
-		panelContenedor.add(listRendimiento);
-		listRendimiento.setVisible(false);
-		
-		lbPlataformaFoto = new JLabel("");
-		lbPlataformaFoto.setBounds(307, 128, 219, 169);
-		panelContenedor.add(lbPlataformaFoto);
-		
-		lblRendimiento = new JLabel("Rendimiento");
-		lblRendimiento.setForeground(new Color(0, 0, 128));
-		lblRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		lblRendimiento.setBounds(712, 68, 151, 36);
-		panelContenedor.add(lblRendimiento);
-		lblRendimiento.setVisible(false);
-		
-		separator_9 = new JSeparator();
-		separator_9.setForeground(new Color(255, 255, 255));
-		separator_9.setBounds(690, 102, 189, 2);
-		panelContenedor.add(separator_9);
-		separator_9.setVisible(false);
-		
-		lblAnalisisDeRendimiento = new JLabel("Analisis de rendimiento");
-		lblAnalisisDeRendimiento.setForeground(new Color(0, 0, 128));
-		lblAnalisisDeRendimiento.setFont(new Font("Segoe Print", Font.BOLD, 35));
-		lblAnalisisDeRendimiento.setBounds(10, 513, 413, 63);
-		panelAnalisisRendimiento.add(lblAnalisisDeRendimiento);
-		
-		lbfondoAnalisisRendimiento = new JLabel("");
-		lbfondoAnalisisRendimiento.setBounds(0, 0, 1240, 587);
-		panelAnalisisRendimiento.add(lbfondoAnalisisRendimiento);
-		panelAnalisisRendimiento.setVisible(false);
-		lbfondoAnalisisRendimiento.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoAnalisisRendimiento.getWidth(), lbfondoAnalisisRendimiento.getHeight()));
-		
 		panelCreacionesJson = new Panel();
 		panelCreacionesJson.setBounds(0, 92, 1240, 587);
 		contentPane.add(panelCreacionesJson);
@@ -316,6 +254,31 @@ public class InterfazApp extends JFrame {
 		panelCreacionesJson.add(panelCreacionColaboracionJson);
 		panelCreacionColaboracionJson.setBorder(new LineBorder(new Color(255, 215, 0), 3));
 		panelCreacionColaboracionJson.setLayout(null);
+		
+		panel_CreacionResumenDeRendimiento = new JPanel();
+		panel_CreacionResumenDeRendimiento.setBounds(10, 8, 811, 487);
+		panelCreacionColaboracionJson.add(panel_CreacionResumenDeRendimiento);
+		panel_CreacionResumenDeRendimiento.setLayout(null);
+		
+		btnGenerarInformeJsonRendimiento = new JButton("GENERAR INFORME JSON");
+		btnGenerarInformeJsonRendimiento.setForeground(Color.WHITE);
+		btnGenerarInformeJsonRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 36));
+		btnGenerarInformeJsonRendimiento.setBackground(new Color(70, 130, 180));
+		btnGenerarInformeJsonRendimiento.setBounds(159, 172, 514, 114);
+		panel_CreacionResumenDeRendimiento.add(btnGenerarInformeJsonRendimiento);
+		
+		lbl_TituloGenerarInformeRendimiento = new JLabel("¡GENERA EL INFORME DE JSON DE RENDIMIENTO!");
+		lbl_TituloGenerarInformeRendimiento.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_TituloGenerarInformeRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
+		lbl_TituloGenerarInformeRendimiento.setBounds(51, 48, 723, 64);
+		panel_CreacionResumenDeRendimiento.add(lbl_TituloGenerarInformeRendimiento);
+		
+		lbl_MensajeInformacionUsuarioRendimiento = new JLabel("");
+		lbl_MensajeInformacionUsuarioRendimiento.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_MensajeInformacionUsuarioRendimiento.setForeground(new Color(46, 139, 87));
+		lbl_MensajeInformacionUsuarioRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
+		lbl_MensajeInformacionUsuarioRendimiento.setBounds(173, 329, 480, 87);
+		panel_CreacionResumenDeRendimiento.add(lbl_MensajeInformacionUsuarioRendimiento);
 		
 		panelNuevaColaboracion = new Panel();
 		panelNuevaColaboracion.setBounds(10, 8, 811, 487);
@@ -502,9 +465,71 @@ public class InterfazApp extends JFrame {
 		panelCreacionesJson.add(lbfondoCrearColaboracionJson);
 		lbfondoCrearColaboracionJson.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoCrearColaboracionJson.getWidth(), lbfondoCrearColaboracionJson.getHeight()));
 		
-		label = new JLabel("New label");
-		label.setBounds(0, 0, 46, 14);
-		panelCreacionesJson.add(label);
+		panelAnalisisRendimiento = new Panel();
+		panelAnalisisRendimiento.setBounds(0, 92, 1240, 587);
+		contentPane.add(panelAnalisisRendimiento);
+		panelAnalisisRendimiento.setVisible(false);
+		panelAnalisisRendimiento.setLayout(null);
+		
+		panelContenedor = new JPanel();
+		panelContenedor.setBounds(109, 93, 1017, 353);
+		panelAnalisisRendimiento.add(panelContenedor);
+		panelContenedor.setVisible(true);
+		panelContenedor.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		panelContenedor.setLayout(null);
+		
+		listPlataformas = new JList();
+		listPlataformas.setBounds(42, 128, 158, 169);
+		listPlataformas.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		listPlataformas.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		panelContenedor.add(listPlataformas);
+		
+		separator_8 = new JSeparator();
+		separator_8.setBounds(42, 102, 158, 2);
+		panelContenedor.add(separator_8);
+		separator_8.setForeground(new Color(255, 255, 255));
+		
+		lbTituloAnalisis = new JLabel("Plataformas");
+		lbTituloAnalisis.setBounds(49, 55, 151, 36);
+		panelContenedor.add(lbTituloAnalisis);
+		lbTituloAnalisis.setForeground(new Color(0, 0, 128));
+		lbTituloAnalisis.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		
+		listRendimiento = new JList();
+		listRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		listRendimiento.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		listRendimiento.setBounds(617, 128, 364, 169);
+		panelContenedor.add(listRendimiento);
+		listRendimiento.setVisible(false);
+		
+		lbPlataformaFoto = new JLabel("");
+		lbPlataformaFoto.setBounds(307, 128, 219, 169);
+		panelContenedor.add(lbPlataformaFoto);
+		
+		lblRendimiento = new JLabel("Rendimiento");
+		lblRendimiento.setForeground(new Color(0, 0, 128));
+		lblRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lblRendimiento.setBounds(712, 68, 151, 36);
+		panelContenedor.add(lblRendimiento);
+		lblRendimiento.setVisible(false);
+		
+		separator_9 = new JSeparator();
+		separator_9.setForeground(new Color(255, 255, 255));
+		separator_9.setBounds(690, 102, 189, 2);
+		panelContenedor.add(separator_9);
+		separator_9.setVisible(false);
+		
+		lblAnalisisDeRendimiento = new JLabel("Analisis de rendimiento");
+		lblAnalisisDeRendimiento.setForeground(new Color(0, 0, 128));
+		lblAnalisisDeRendimiento.setFont(new Font("Segoe Print", Font.BOLD, 35));
+		lblAnalisisDeRendimiento.setBounds(10, 513, 413, 63);
+		panelAnalisisRendimiento.add(lblAnalisisDeRendimiento);
+		
+		lbfondoAnalisisRendimiento = new JLabel("");
+		lbfondoAnalisisRendimiento.setBounds(0, 0, 1240, 587);
+		panelAnalisisRendimiento.add(lbfondoAnalisisRendimiento);
+		panelAnalisisRendimiento.setVisible(false);
+		lbfondoAnalisisRendimiento.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoAnalisisRendimiento.getWidth(), lbfondoAnalisisRendimiento.getHeight()));
 		
 		panelColaboracionesCsv = new JPanel();
 		panelColaboracionesCsv.setBounds(0, 92, 1240, 587);

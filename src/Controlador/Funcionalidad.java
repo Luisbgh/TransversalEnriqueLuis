@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -244,10 +246,20 @@ public class Funcionalidad {
 		
 	}//ACTUALIZAR RESULTADOS
 	
-	private void syso() {
-		// TODO Auto-generated method stub
-
-	}
+	
+	//EJERCICIO 3
+		public void crearNuevoCSVMetricas(List<MetricaContenido> metricas, String nuevaRutaCSV){
+			try {
+				FileWriter fw = new FileWriter(nuevaRutaCSV);
+				
+				StatefulBeanToCsv<MetricaContenido> beanToCsv = new StatefulBeanToCsvBuilder<MetricaContenido>(fw).build();
+				beanToCsv.write(metricas);
+				fw.flush();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}//catch
+		}//crearNuevoCSV
 	
 	//EJERICIO 4
 	public void exportarColaboracionesCSV(ArrayNode creadores, List<MetricaContenido> misMetricasDeContenido) {
@@ -331,8 +343,7 @@ public class Funcionalidad {
 	}//FIN GENERAR INFORME CREADORES
 	
 	//EJERCICIO 8
-	public void generarReporteColaboraciones(String rutaJSON, String rutaCSV) throws Exception {
-		
+	public void generarReporteColaboraciones(String rutaJSON, String rutaCSV) throws Exception {	
 		try {
 			File archivoJSON = new File(rutaJSON);
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -379,17 +390,60 @@ public class Funcionalidad {
 		}//catch
 	}//crearNuevoCSV
 	
-	public void crearNuevoCSVMetricas(List<MetricaContenido> metricas, String nuevaRutaCSV){
-		try {
-			FileWriter fw = new FileWriter(nuevaRutaCSV);
+	//EJERCICIO 10
+	public void calcularResumenRendimiento(String rutaJSON) throws JsonProcessingException, IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode creadores = objectMapper.readTree(new File(rutaJSON));
+		
+		ArrayNode resumenRendimiento = objectMapper.createArrayNode();
+		DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		for(JsonNode creador : creadores) {
+			String nombreCreador = creador.get("nombre").asText();
 			
-			StatefulBeanToCsv<MetricaContenido> beanToCsv = new StatefulBeanToCsvBuilder<MetricaContenido>(fw).build();
-			beanToCsv.write(metricas);
-			fw.flush();
+			String plataformaMasVistas = null, plataformaMasInteracciones = null;
+			int maxVistas = 0;
+			double maxPromedioInteracciones = 0;
 			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}//catch
-	}//crearNuevoCSV
+			for(JsonNode plataforma : creador.get("plataformas")) {
+				String nombrePlataforma = plataforma.get("nombre").asText();
+				int totalVistas = 0, totalInteracciones = 0, contador = 0;
+				
+				for(JsonNode historico : plataforma.get("historico")) {
+					LocalDate fecha = LocalDate.parse(historico.get("fecha").asText(), formatoFecha);
+				
+					if(fecha.getYear()==2023) {
+						totalVistas = totalVistas + historico.get("nuevos_seguidores").asInt();
+						totalInteracciones = totalInteracciones + historico.get("interacciones").asInt();
+						contador++;
+					}
+				}
+				
+				if(totalVistas>maxVistas) {
+					maxVistas = totalVistas;
+					plataformaMasVistas = nombrePlataforma;
+				}
+				
+				if(contador>0) {
+					double promedioInteracciones = totalInteracciones / contador;
+					if(promedioInteracciones > maxPromedioInteracciones) {
+						maxPromedioInteracciones = promedioInteracciones;
+						plataformaMasInteracciones = nombrePlataforma;
+					}
+				}
+			}
+			
+			ObjectNode resultadoCreador = objectMapper.createObjectNode();
+			resultadoCreador.put("nombre", nombreCreador);
+			resultadoCreador.put("plataformaMasVistas2023", plataformaMasVistas);
+			resultadoCreador.put("plataformaMasInteraccionesPromedio2023", plataformaMasInteracciones);
+			
+			resumenRendimiento.add(resultadoCreador);
+		}
+		ObjectNode rootNode=objectMapper.createObjectNode();
+		rootNode.set("ResumenRendimientoCreadores2023", resumenRendimiento);
+		objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File("informesJSON/resumen_rendimiento_creadores.json"), rootNode);
+		
+	}//FIN CALCULAR RESUMEN RENDIMIENTO
 	
 }//FIN FUNCIONALIDAD
