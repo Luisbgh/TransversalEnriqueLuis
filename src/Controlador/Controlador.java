@@ -67,6 +67,7 @@ public class Controlador implements ActionListener, MouseListener {
         this.vista.itemColaboracionesCsv.addActionListener(this);
         this.vista.combobox_CreadoresContenido.addActionListener(this);
         this.vista.combobox_Ámbitos.addActionListener(this);
+        this.vista.combobox_CreadoresTasaCrecimiento.addActionListener(this);
         this.vista.comboBox_menuGeneracionJson.addActionListener(this);
         this.vista.btnInstagram.addActionListener(this);
         this.vista.btnYt.addActionListener(this);
@@ -434,6 +435,14 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelColaboracionesCsv.setVisible(false);
 			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.panelConversionesColaboracionesJson.setVisible(false);
+		}
+		
+		if(e.getSource()==vista.combobox_CreadoresTasaCrecimiento) {
+			if(vista.combobox_CreadoresTasaCrecimiento.getSelectedIndex() > 0) {
+				String creadorSeleccionado = vista.combobox_CreadoresTasaCrecimiento.getSelectedItem().toString();
+				String nombreCreador = creadorSeleccionado.split(" - ")[1];
+				
+			}
 		}
 		
 	}//ACTION PERFORMED

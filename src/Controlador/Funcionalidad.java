@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -342,7 +343,7 @@ public class Funcionalidad {
 	}//FIN GENERAR INFORME CREADORES
 	
 	//EJERCICIO 7
-	public void calcularYMostrarTasaCrecimiento(String rutaJSON) throws JsonProcessingException, IOException {
+	public void calcularYMostrarTasaCrecimiento(String rutaJSON, String nombreCreador, JProgressBar progressBarEneroAFebreroIG, JProgressBar progressBarFebreroMarzoIG, JProgressBar progressBarEneroAFebreroTk, JProgressBar progressBarFebreroMarzoTk, JProgressBar progressBarEneroAFebreroTw, JProgressBar progressBarFebreroMarzoTw, JProgressBar progressBarEneroAFebreroYt, JProgressBar progressBarFebreroMarzoYt) throws JsonProcessingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode creadores = objectMapper.readTree(new File(rutaJSON));
 		
@@ -369,14 +370,15 @@ public class Funcionalidad {
 					}
 				}
 				
-				if(seguidoresEnero>0) {
-					int diferenciaFebrero = seguidoresFebrero - seguidoresEnero;
-					double tasaCrecimientoFebrero = (diferenciaFebrero*100) / seguidoresEnero;
-				}
-				
-				if(seguidoresFebrero > 0) {
-					int diferenciaMarzo = seguidoresMarzo - seguidoresFebrero;
-					double tasaCrecimientoMarzo = (diferenciaMarzo*100) / seguidoresFebrero;
+				switch(nombrePlataforma) {
+				case "Instagram":
+					break;
+				case "TikTok":
+					break;
+				case "YouTube":
+					break;
+				case "Twitch":
+					break;
 				}
 			}
 		}
