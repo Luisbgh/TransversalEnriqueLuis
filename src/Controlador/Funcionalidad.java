@@ -446,4 +446,41 @@ public class Funcionalidad {
 		
 	}//FIN CALCULAR RESUMEN RENDIMIENTO
 	
+	//EJERCICO 12
+	
+	public void convertirColaboraciones(String rutaJSON) throws JsonProcessingException, IOException {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode creadores = mapper.readTree(new File(rutaJSON));
+		ArrayNode conversiones=(ArrayNode)mapper.createArrayNode();
+		
+		try {	
+			for(JsonNode creador : creadores) {
+				ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
+				for(JsonNode colaboracion: colaboraciones) {
+					ObjectNode colaborador=mapper.createObjectNode();
+					colaborador.put("colaboracion", colaboracion.get("colaborador").asText());
+					colaborador.put("tematica", colaboracion.get("tematica").asText());
+					colaborador.put("fecha_inicio", colaboracion.get("fecha_inicio").asText());
+					colaborador.put("fecha_fin", colaboracion.get("fecha_fin").asText());
+					colaborador.put("tipo", colaboracion.get("tipo").asText());
+					colaborador.put("estado", colaboracion.get("estado").asText());
+					//
+					conversiones.add(colaborador);
+				}//for
+			}//for
+			ObjectNode rootNode=mapper.createObjectNode();
+			rootNode.set("Colaboraciones", conversiones);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("informesJSON/colaboraciones.json"), rootNode);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}//catch
+		
+	}//convertirColaboraciones
+	
+	
+	
+	
 }//FIN FUNCIONALIDAD

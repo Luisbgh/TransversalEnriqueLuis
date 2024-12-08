@@ -152,10 +152,8 @@ public class InterfazApp extends JFrame {
 	public Panel panelCreacionesJson;
 	public JLabel lbfondoCrearColaboracionJson;
 	public JComboBox comboBox_menuGeneracionJson;
-	public JLabel lbTituloOpcionJsonCreacion;
 	public JSeparator separator_4;
 	public JPanel panelCreacionColaboracionJson;
-	public JLabel lbitemMenuJsonGeneracionSeleccionado;
 	public Panel panelNuevaColaboracion;
 	public JComboBox comboBoxCreador;
 	public JComboBox comboBoxColadoborador;
@@ -200,6 +198,15 @@ public class InterfazApp extends JFrame {
 	public JButton btnGenerarInformeJsonRendimiento;
 	public JLabel lbl_TituloGenerarInformeRendimiento;
 	public JLabel lbl_MensajeInformacionUsuarioRendimiento;
+	public JPanel panelConversionesColaboracionesJson;
+	public JButton btnConversionColaboracionesJson;
+	public JLabel lbl_TituloGenerarColaboracionesJson;
+	public JLabel lbl_MensajeInformacionRetroalimentacion;
+	public JLabel lbitemMenuJsonGeneracionSeleccionado;
+	public JLabel lbTituloOpcionJsonCreacion;
+	public JLabel lbtituloConversionesColaboraciones;
+	public JLabel lbfondoConversionesJson;
+	public JLabel lbRetroalimentacion;
 	
 	
 	/**
@@ -243,11 +250,19 @@ public class InterfazApp extends JFrame {
 		panelCreacionesJson.setLayout(null);
 		panelCreacionesJson.setVisible(false);
 		
-		lbitemMenuJsonGeneracionSeleccionado = new JLabel("");
-		lbitemMenuJsonGeneracionSeleccionado.setForeground(new Color(0, 0, 128));
-		lbitemMenuJsonGeneracionSeleccionado.setFont(new Font("Segoe Print", Font.BOLD, 35));
-		lbitemMenuJsonGeneracionSeleccionado.setBounds(10, 513, 367, 63);
+		lbitemMenuJsonGeneracionSeleccionado = new JLabel();
+		lbitemMenuJsonGeneracionSeleccionado.setBounds(10, 513, 497, 63);
 		panelCreacionesJson.add(lbitemMenuJsonGeneracionSeleccionado);
+		lbitemMenuJsonGeneracionSeleccionado.setHorizontalAlignment(SwingConstants.LEFT);
+		lbitemMenuJsonGeneracionSeleccionado.setForeground(new Color(0, 0, 128));
+		lbitemMenuJsonGeneracionSeleccionado.setFont(new Font("Segoe Print", Font.BOLD, 40));
+		
+		lbTituloOpcionJsonCreacion = new JLabel("Opciones de creación:");
+		lbTituloOpcionJsonCreacion.setHorizontalAlignment(SwingConstants.CENTER);
+		lbTituloOpcionJsonCreacion.setForeground(new Color(0, 0, 128));
+		lbTituloOpcionJsonCreacion.setFont(new Font("Trebuchet MS", Font.BOLD, 24));
+		lbTituloOpcionJsonCreacion.setBounds(22, 46, 326, 35);
+		panelCreacionesJson.add(lbTituloOpcionJsonCreacion);
 		
 		panelCreacionColaboracionJson = new JPanel();
 		panelCreacionColaboracionJson.setBounds(378, 47, 831, 505);
@@ -264,13 +279,13 @@ public class InterfazApp extends JFrame {
 		btnGenerarInformeJsonRendimiento.setForeground(Color.WHITE);
 		btnGenerarInformeJsonRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 36));
 		btnGenerarInformeJsonRendimiento.setBackground(new Color(70, 130, 180));
-		btnGenerarInformeJsonRendimiento.setBounds(159, 172, 514, 114);
+		btnGenerarInformeJsonRendimiento.setBounds(10, 177, 514, 114);
 		panel_CreacionResumenDeRendimiento.add(btnGenerarInformeJsonRendimiento);
 		
 		lbl_TituloGenerarInformeRendimiento = new JLabel("¡GENERA EL INFORME DE JSON DE RENDIMIENTO!");
 		lbl_TituloGenerarInformeRendimiento.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_TituloGenerarInformeRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
-		lbl_TituloGenerarInformeRendimiento.setBounds(51, 48, 723, 64);
+		lbl_TituloGenerarInformeRendimiento.setBounds(-11, 44, 723, 64);
 		panel_CreacionResumenDeRendimiento.add(lbl_TituloGenerarInformeRendimiento);
 		
 		lbl_MensajeInformacionUsuarioRendimiento = new JLabel("");
@@ -279,6 +294,13 @@ public class InterfazApp extends JFrame {
 		lbl_MensajeInformacionUsuarioRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 		lbl_MensajeInformacionUsuarioRendimiento.setBounds(173, 329, 480, 87);
 		panel_CreacionResumenDeRendimiento.add(lbl_MensajeInformacionUsuarioRendimiento);
+		
+		lbl_MensajeInformacionRetroalimentacion = new JLabel("");
+		lbl_MensajeInformacionRetroalimentacion.setBounds(-90, 358, 480, 87);
+		panel_CreacionResumenDeRendimiento.add(lbl_MensajeInformacionRetroalimentacion);
+		lbl_MensajeInformacionRetroalimentacion.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_MensajeInformacionRetroalimentacion.setForeground(new Color(46, 139, 87));
+		lbl_MensajeInformacionRetroalimentacion.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 		
 		panelNuevaColaboracion = new Panel();
 		panelNuevaColaboracion.setBounds(10, 8, 811, 487);
@@ -441,13 +463,6 @@ public class InterfazApp extends JFrame {
 		lbl_MensajeInformacionUsuario.setBounds(173, 329, 480, 87);
 		panel_CreacionInforme.add(lbl_MensajeInformacionUsuario);
 		panelCreacionColaboracionJson.setVisible(false);
-		
-		lbTituloOpcionJsonCreacion = new JLabel("Opciones de creación:");
-		lbTituloOpcionJsonCreacion.setForeground(new Color(0, 0, 128));
-		lbTituloOpcionJsonCreacion.setHorizontalAlignment(SwingConstants.CENTER);
-		lbTituloOpcionJsonCreacion.setFont(new Font("Trebuchet MS", Font.BOLD, 24));
-		lbTituloOpcionJsonCreacion.setBounds(10, 46, 326, 35);
-		panelCreacionesJson.add(lbTituloOpcionJsonCreacion);
 		
 		separator_4 = new JSeparator();
 		separator_4.setForeground(new Color(255, 255, 255));
@@ -1163,6 +1178,44 @@ public class InterfazApp extends JFrame {
 		lbl_Logo.setBounds(10, 11, 111, 70);
 		panel_Cabecera.add(lbl_Logo);
 		lbl_Logo.setIcon(ajustarTamañoImg("img/logoEmpresa.jpg", lbl_Logo.getWidth(), lbl_Logo.getHeight()));
+		
+		panelConversionesColaboracionesJson = new JPanel();
+		panelConversionesColaboracionesJson.setBounds(0, 92, 1240, 587);
+		contentPane.add(panelConversionesColaboracionesJson);
+		panelConversionesColaboracionesJson.setLayout(null);
+		panelConversionesColaboracionesJson.setVisible(false);
+		
+		lbRetroalimentacion = new JLabel("");
+		lbRetroalimentacion.setHorizontalAlignment(SwingConstants.CENTER);
+		lbRetroalimentacion.setForeground(new Color(46, 139, 89));
+		lbRetroalimentacion.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
+		lbRetroalimentacion.setBounds(325, 375, 606, 105);
+		panelConversionesColaboracionesJson.add(lbRetroalimentacion);
+		
+		btnConversionColaboracionesJson = new JButton("COLABORACIONES JSON");
+		btnConversionColaboracionesJson.setForeground(Color.WHITE);
+		btnConversionColaboracionesJson.setFont(new Font("Trebuchet MS", Font.BOLD, 36));
+		btnConversionColaboracionesJson.setBackground(new Color(70, 130, 180));
+		btnConversionColaboracionesJson.setBounds(365, 225, 514, 114);
+		panelConversionesColaboracionesJson.add(btnConversionColaboracionesJson);
+		
+		lbl_TituloGenerarColaboracionesJson = new JLabel("¡CONVIERTE LAS COLABORACIONES A JSON!");
+		lbl_TituloGenerarColaboracionesJson.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_TituloGenerarColaboracionesJson.setFont(new Font("Trebuchet MS", Font.BOLD, 35));
+		lbl_TituloGenerarColaboracionesJson.setBounds(242, 110, 777, 80);
+		panelConversionesColaboracionesJson.add(lbl_TituloGenerarColaboracionesJson);
+		
+		lbtituloConversionesColaboraciones = new JLabel("Conversiones");
+		lbtituloConversionesColaboraciones.setForeground(new Color(0, 0, 128));
+		lbtituloConversionesColaboraciones.setFont(new Font("Segoe Print", Font.BOLD, 40));
+		lbtituloConversionesColaboraciones.setBounds(10, 513, 323, 63);
+		panelConversionesColaboracionesJson.add(lbtituloConversionesColaboraciones);
+		
+		lbfondoConversionesJson = new JLabel("");
+		lbfondoConversionesJson.setBounds(0, 0, 1240, 587);
+		panelConversionesColaboracionesJson.add(lbfondoConversionesJson);
+		lbfondoConversionesJson.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoConversionesJson.getWidth(), lbfondoConversionesJson.getHeight()));
+		
 		
 	}//InterfazApp CONSTRUCTOR
 	
