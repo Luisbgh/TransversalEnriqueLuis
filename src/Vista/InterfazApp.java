@@ -44,6 +44,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.JProgressBar;
 
 public class InterfazApp extends JFrame {
 
@@ -214,6 +215,16 @@ public class InterfazApp extends JFrame {
 	public JLabel lbl_ImgTwitch;
 	public JLabel lbl_ImgTikTok;
 	public JLabel lbl_ImgInstagram;
+	public JLabel lbcrecimientoEF;
+	public JLabel lbcrecimientoFM;
+	public JProgressBar progressBarYT_EF;
+	public JProgressBar progressBarYT_FM;
+	public JProgressBar progressBarTW_EF;
+	public JProgressBar progressBarTW_FM;
+	public JProgressBar progressBarTK_EF;
+	public JProgressBar progressBarTK_FM;
+	public JProgressBar progressBarIG_EF;
+	public JProgressBar progressBarIG_FM;
 	
 	/**
 	 * Launch the application.
@@ -256,23 +267,76 @@ public class InterfazApp extends JFrame {
 		panel_AnalisisSeguidoresCrecimiento.setLayout(null);
 		panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 		
+		progressBarIG_EF = new JProgressBar();
+		progressBarIG_EF.setBounds(731, 465, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG_EF);
+		
+		progressBarIG_FM = new JProgressBar();
+		progressBarIG_FM.setBounds(1009, 465, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG_FM);
+		
+		progressBarTK_FM = new JProgressBar();
+		progressBarTK_FM.setBounds(1009, 358, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK_FM);
+		
+		progressBarTK_EF = new JProgressBar();
+		progressBarTK_EF.setBounds(731, 358, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK_EF);
+		
+		progressBarTW_FM = new JProgressBar();
+		progressBarTW_FM.setBounds(1009, 250, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW_FM);
+		
+		progressBarTW_EF = new JProgressBar();
+		progressBarTW_EF.setBounds(731, 250, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW_EF);
+		
+		progressBarYT_FM = new JProgressBar();
+		progressBarYT_FM.setBounds(1009, 115, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT_FM);
+		
+		progressBarYT_EF = new JProgressBar();
+		progressBarYT_EF.setBounds(731, 115, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT_EF);
+		
+		lbcrecimientoFM = new JLabel("FEBRERO-MARZO");
+		lbcrecimientoFM.setHorizontalAlignment(SwingConstants.CENTER);
+		lbcrecimientoFM.setForeground(new Color(0, 0, 0));
+		lbcrecimientoFM.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lbcrecimientoFM.setBounds(964, 35, 218, 21);
+		panel_AnalisisSeguidoresCrecimiento.add(lbcrecimientoFM);
+		
+		lbcrecimientoEF = new JLabel("ENERO-FEBRERO");
+		lbcrecimientoEF.setHorizontalAlignment(SwingConstants.CENTER);
+		lbcrecimientoEF.setForeground(new Color(0, 0, 0));
+		lbcrecimientoEF.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lbcrecimientoEF.setBounds(698, 35, 218, 21);
+		panel_AnalisisSeguidoresCrecimiento.add(lbcrecimientoEF);
+		
+		JLabel lbtextoCrecimiento = new JLabel("CRECIMIENTO");
+		lbtextoCrecimiento.setHorizontalAlignment(SwingConstants.CENTER);
+		lbtextoCrecimiento.setForeground(new Color(0, 0, 0));
+		lbtextoCrecimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lbtextoCrecimiento.setBounds(490, 35, 168, 21);
+		panel_AnalisisSeguidoresCrecimiento.add(lbtextoCrecimiento);
+		
 		lbl_ImgInstagram = new JLabel("");
-		lbl_ImgInstagram.setBounds(531, 428, 89, 76);
+		lbl_ImgInstagram.setBounds(531, 440, 89, 76);
 		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgInstagram);
 		lbl_ImgInstagram.setIcon((ajustarTamañoImg("img/instagram.jpeg", lbl_ImgInstagram.getWidth(), lbl_ImgInstagram.getHeight())));
 		
 		lbl_ImgTikTok = new JLabel("");
-		lbl_ImgTikTok.setBounds(531, 316, 89, 76);
+		lbl_ImgTikTok.setBounds(531, 328, 89, 76);
 		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgTikTok);
 		lbl_ImgTikTok.setIcon((ajustarTamañoImg("img/tiktok.png", lbl_ImgTikTok.getWidth(), lbl_ImgTikTok.getHeight())));
 		
 		lbl_ImgTwitch = new JLabel("");
-		lbl_ImgTwitch.setBounds(531, 206, 89, 76);
+		lbl_ImgTwitch.setBounds(531, 218, 89, 76);
 		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgTwitch);
 		lbl_ImgTwitch.setIcon((ajustarTamañoImg("img/Twitch.jpg", lbl_ImgTwitch.getWidth(), lbl_ImgTwitch.getHeight())));
 		
 		lbl_ImgYoutube = new JLabel("");
-		lbl_ImgYoutube.setBounds(529, 85, 89, 76);
+		lbl_ImgYoutube.setBounds(529, 87, 89, 76);
 		panel_AnalisisSeguidoresCrecimiento.add(lbl_ImgYoutube);
 		lbl_ImgYoutube.setIcon((ajustarTamañoImg("img/youtube.png", lbl_ImgYoutube.getWidth(), lbl_ImgYoutube.getHeight())));
 		
@@ -285,17 +349,13 @@ public class InterfazApp extends JFrame {
 		combobox_CreadoresTasaCrecimiento = new JComboBox();
 		combobox_CreadoresTasaCrecimiento.setMaximumRowCount(3);
 		combobox_CreadoresTasaCrecimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 27));
-		combobox_CreadoresTasaCrecimiento.setBounds(10, 85, 296, 47);
+		combobox_CreadoresTasaCrecimiento.setBounds(115, 85, 296, 47);
 		panel_AnalisisSeguidoresCrecimiento.add(combobox_CreadoresTasaCrecimiento);
 		
 		lbl_FondoAnalisisSeguidores = new JLabel("");
 		lbl_FondoAnalisisSeguidores.setBounds(0, 0, 1240, 587);
 		panel_AnalisisSeguidoresCrecimiento.add(lbl_FondoAnalisisSeguidores);
 		lbl_FondoAnalisisSeguidores.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbl_FondoAnalisisSeguidores.getWidth(), lbl_FondoAnalisisSeguidores.getHeight()));
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(709, 33, 46, 14);
-		panel_AnalisisSeguidoresCrecimiento.add(lblNewLabel);
 		
 		panelCreacionesJson = new Panel();
 		panelCreacionesJson.setBounds(0, 92, 1240, 587);
