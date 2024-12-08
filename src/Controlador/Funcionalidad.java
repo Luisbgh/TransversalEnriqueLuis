@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -48,9 +50,6 @@ public class Funcionalidad {
 			System.out.println("---JSON---");
 			ArrayNode creadores=lanzador.obtenerListaCreadores("files/creadores.json");
 			lanzador.mostrarJson(creadores);
-			
-			
-			
 
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -355,46 +354,90 @@ public class Funcionalidad {
 	}//FIN GENERAR INFORME CREADORES
 	
 	//EJERCICIO 7
-	public void calcularYMostrarTasaCrecimiento(String rutaJSON, String nombreCreador, JProgressBar progressBarEneroAFebreroIG, JProgressBar progressBarFebreroMarzoIG, JProgressBar progressBarEneroAFebreroTk, JProgressBar progressBarFebreroMarzoTk, JProgressBar progressBarEneroAFebreroTw, JProgressBar progressBarFebreroMarzoTw, JProgressBar progressBarEneroAFebreroYt, JProgressBar progressBarFebreroMarzoYt) throws JsonProcessingException, IOException {
+	public void calcularYMostrarTasaCrecimiento(String rutaJSON, int idCreador, JProgressBar progressBarEneroAFebreroIG, JProgressBar progressBarFebreroMarzoIG, JProgressBar progressBarEneroAFebreroTk, JProgressBar progressBarFebreroMarzoTk, JProgressBar progressBarEneroAFebreroTw, JProgressBar progressBarFebreroMarzoTw, JProgressBar progressBarEneroAFebreroYt, JProgressBar progressBarFebreroMarzoYt) throws JsonProcessingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode creadores = objectMapper.readTree(new File(rutaJSON));
 		
 		for(JsonNode creador: creadores) {
-			String nombre = creador.get("nombre").asText();
+			int creadorId = creador.get("id").asInt();
 			
-			for(JsonNode plataforma : creador.get("plataformas")) {
-				String nombrePlataforma = plataforma.get("nombre").asText();
-				
-				int seguidoresEnero = 0, seguidoresFebrero = 0, seguidoresMarzo = 0;
-				
-				for(JsonNode historial : plataforma.get("historico")) {
-					LocalDate fecha = LocalDate.parse(historial.get("fecha").asText());
-					int nuevosSeguidores = historial.get("nuevos_seguidores").asInt();
+			if(creadorId == idCreador) {
+				for(JsonNode plataforma : creador.get("plataformas")) {
+					String nombrePlataforma = plataforma.get("nombre").asText();
 					
-					if(fecha.getYear()==2023) {
-						if(fecha.getMonthValue()==1) {
-							seguidoresEnero = seguidoresEnero + nuevosSeguidores;
-						}else if(fecha.getMonthValue()==2) {
-							seguidoresFebrero = seguidoresFebrero + nuevosSeguidores;
-						}else if(fecha.getMonthValue()==3) {
-							seguidoresMarzo = seguidoresMarzo + nuevosSeguidores;
+					int seguidoresEnero = 0, seguidoresFebrero = 0, seguidoresMarzo = 0;
+					
+					for(JsonNode historial : plataforma.get("historico")) {
+						LocalDate fecha = LocalDate.parse(historial.get("fecha").asText());
+						int nuevosSeguidores = historial.get("nuevos_seguidores").asInt();
+						
+						if(fecha.getYear()==2023) {
+							if(fecha.getMonthValue()==1) {
+								seguidoresEnero = seguidoresEnero + nuevosSeguidores;
+							}else if(fecha.getMonthValue()==2) {
+								seguidoresFebrero = seguidoresFebrero + nuevosSeguidores;
+							}else if(fecha.getMonthValue()==3) {
+								seguidoresMarzo = seguidoresMarzo + nuevosSeguidores;
+							}
 						}
 					}
-				}
-				
-				switch(nombrePlataforma) {
-				case "Instagram":
-					break;
-				case "TikTok":
-					break;
-				case "YouTube":
-					break;
-				case "Twitch":
-					break;
+					
+					switch(nombrePlataforma) {
+					case "Instagram":
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroIG, progressBarFebreroMarzoIG);
+						break;
+					case "TikTok":
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroTk, progressBarFebreroMarzoTk);
+						break;
+					case "YouTube":
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroYt, progressBarFebreroMarzoYt);
+						break;
+					case "Twitch":
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroTw, progressBarFebreroMarzoTw);
+						break;
+					}
 				}
 			}
 		}
+		
 	}//FIN CALCULAR Y MOSTRAR TASA DE CRECIMIENTO
+	
+	public void actualizarBarrasProgreso(int seguidoresEnero, int seguidoresFebrero, int seguidoresMarzo, JProgressBar progressBarEneroAFebrero, JProgressBar progressBarFebreroAMarzo) {
+		if(seguidoresEnero >0) {
+			int diferenciaFebrero = seguidoresFebrero - seguidoresEnero;
+			double tasaCrecimientoFebrero = (diferenciaFebrero*100.0)/seguidoresEnero;
+			progressBarEneroAFebrero.setValue((int) tasaCrecimientoFebrero);
+			
+			actualizarColoresProgressBar(progressBarEneroAFebrero);
+		}
+		if(seguidoresFebrero >0) {
+			int diferenciaMarzo = seguidoresMarzo - seguidoresFebrero;
+			double tasaCrecimientoMarzo = (diferenciaMarzo*100.0)/seguidoresFebrero;
+			progressBarFebreroAMarzo.setValue((int) tasaCrecimientoMarzo);
+			
+			actualizarColoresProgressBar(progressBarFebreroAMarzo);
+		}
+	}//ACTUALIZAR BARRAS PROGRESO
+	
+	public void actualizarColoresProgressBar(JProgressBar progressBar) {
+		int valor = progressBar.getValue();
+		
+		if(valor >=0 && valor<=25) {
+			progressBar.setForeground(Color.RED);
+		}else if(valor>25 && valor <=75) {
+			progressBar.setForeground(Color.YELLOW);
+		}else{
+			progressBar.setForeground(Color.GREEN);
+		}
+		
+		if(valor >=0 && valor<=25) {
+			progressBar.setForeground(Color.RED);
+		}else if(valor>25 && valor <=75) {
+			progressBar.setForeground(new Color(228, 160, 16));
+		}else{
+			progressBar.setForeground(new Color(0, 136, 0));
+		}
+	}
 	
 	//EJERCICIO 8
 	public void generarReporteColaboraciones(String rutaJSON, String rutaCSV) throws Exception {	

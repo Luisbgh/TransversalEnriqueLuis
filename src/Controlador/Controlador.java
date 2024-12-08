@@ -435,13 +435,27 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelColaboracionesCsv.setVisible(false);
 			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.panelConversionesColaboracionesJson.setVisible(false);
+			vista.combobox_CreadoresTasaCrecimiento.setSelectedIndex(0);
 		}
 		
 		if(e.getSource()==vista.combobox_CreadoresTasaCrecimiento) {
 			if(vista.combobox_CreadoresTasaCrecimiento.getSelectedIndex() > 0) {
 				String creadorSeleccionado = vista.combobox_CreadoresTasaCrecimiento.getSelectedItem().toString();
-				String nombreCreador = creadorSeleccionado.split(" - ")[1];
-				
+				idCreador = Integer.parseInt(creadorSeleccionado.split(" - ") [0]);
+				try {
+					funcionalidad.calcularYMostrarTasaCrecimiento("files/creadores.json", idCreador, vista.progressBarIG_EF, vista.progressBarIG_FM, vista.progressBarTK_EF, vista.progressBarTK_FM, vista.progressBarTW_EF, vista.progressBarTW_FM, vista.progressBarYT_EF, vista.progressBarYT_FM);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}else {
+				vista.progressBarIG_EF.setValue(0);
+				vista.progressBarIG_FM.setValue(0);
+				vista.progressBarTK_EF.setValue(0);
+				vista.progressBarTK_FM.setValue(0);
+				vista.progressBarTW_EF.setValue(0);
+				vista.progressBarTW_FM.setValue(0);
+				vista.progressBarYT_EF.setValue(0);
+				vista.progressBarYT_FM.setValue(0);
 			}
 		}
 		

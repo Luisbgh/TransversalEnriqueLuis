@@ -268,34 +268,43 @@ public class InterfazApp extends JFrame {
 		panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 		
 		progressBarIG_EF = new JProgressBar();
+		progressBarIG_EF.setStringPainted(true);
 		progressBarIG_EF.setBounds(731, 465, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG_EF);
 		
 		progressBarIG_FM = new JProgressBar();
+		progressBarIG_FM.setStringPainted(true);
 		progressBarIG_FM.setBounds(1009, 465, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG_FM);
 		
 		progressBarTK_FM = new JProgressBar();
+		progressBarTK_FM.setStringPainted(true);
 		progressBarTK_FM.setBounds(1009, 358, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK_FM);
 		
 		progressBarTK_EF = new JProgressBar();
+		progressBarTK_EF.setStringPainted(true);
 		progressBarTK_EF.setBounds(731, 358, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK_EF);
 		
 		progressBarTW_FM = new JProgressBar();
+		progressBarTW_FM.setStringPainted(true);
 		progressBarTW_FM.setBounds(1009, 250, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW_FM);
 		
 		progressBarTW_EF = new JProgressBar();
+		progressBarTW_EF.setStringPainted(true);
 		progressBarTW_EF.setBounds(731, 250, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW_EF);
 		
 		progressBarYT_FM = new JProgressBar();
+		progressBarYT_FM.setStringPainted(true);
 		progressBarYT_FM.setBounds(1009, 115, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT_FM);
 		
 		progressBarYT_EF = new JProgressBar();
+		progressBarYT_EF.setMaximum(100);
+		progressBarYT_EF.setStringPainted(true);
 		progressBarYT_EF.setBounds(731, 115, 146, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT_EF);
 		
