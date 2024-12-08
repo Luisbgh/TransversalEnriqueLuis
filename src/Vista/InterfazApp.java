@@ -61,7 +61,7 @@ public class InterfazApp extends JFrame {
 	public JMenu menuCsv;
 	public JMenuItem itemPublicacionesCsv;
 	public JMenuItem itemColaboracionesCsv;
-	public JMenu menuContenido;
+	public JMenu menuAnalisisComparativo;
 	public JPanel panelBodyPagina;
 	public JLabel lbl_FondoApp;
 	public JLabel lbl_Logo;
@@ -183,6 +183,17 @@ public class InterfazApp extends JFrame {
 	public JButton btnGenerarInformeJson;
 	public JLabel lbl_TituloGenerarInforme;
 	public JLabel lbl_MensajeInformacionUsuario;
+	public Panel panelAnalisisRendimiento;
+	public JLabel label;
+	public JLabel lbfondoAnalisisRendimiento;
+	public JLabel lblAnalisisDeRendimiento;
+	public JMenuItem itemAnalisis;
+	public JList listPlataformas;
+	public JLabel lbTituloAnalisis;
+	public JSeparator separator_8;
+	public JLabel lbfotoPlataforma;
+	public JTable tableAnalisis;
+	public JScrollPane scrollPaneAnalisis;
 	
 	/**
 	 * Launch the application.
@@ -218,6 +229,53 @@ public class InterfazApp extends JFrame {
 		
 		setLocationRelativeTo(null);
 		setResizable(false);
+		
+		panelAnalisisRendimiento = new Panel();
+		panelAnalisisRendimiento.setBounds(0, 92, 1240, 587);
+		contentPane.add(panelAnalisisRendimiento);
+		panelAnalisisRendimiento.setVisible(false);
+		panelAnalisisRendimiento.setLayout(null);
+		
+		scrollPaneAnalisis = new JScrollPane();
+		scrollPaneAnalisis.setBounds(631, 277, 182, 128);
+		panelAnalisisRendimiento.add(scrollPaneAnalisis);
+		
+		tableAnalisis = new JTable();
+		scrollPaneAnalisis.setViewportView(tableAnalisis);
+		scrollPaneAnalisis.setVisible(false);
+		
+		separator_8 = new JSeparator();
+		separator_8.setForeground(new Color(255, 255, 255));
+		separator_8.setBounds(43, 149, 217, 2);
+		panelAnalisisRendimiento.add(separator_8);
+		
+		lbfotoPlataforma = new JLabel("");
+		lbfotoPlataforma.setBounds(632, 89, 182, 128);
+		panelAnalisisRendimiento.add(lbfotoPlataforma);
+		
+		lbTituloAnalisis = new JLabel("Plataformas");
+		lbTituloAnalisis.setForeground(new Color(0, 0, 128));
+		lbTituloAnalisis.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lbTituloAnalisis.setBounds(81, 111, 151, 36);
+		panelAnalisisRendimiento.add(lbTituloAnalisis);
+		
+		listPlataformas = new JList();
+		listPlataformas.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		listPlataformas.setBounds(43, 159, 219, 147);
+		panelAnalisisRendimiento.add(listPlataformas);
+		listPlataformas.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		
+		lblAnalisisDeRendimiento = new JLabel("Analisis de rendimiento");
+		lblAnalisisDeRendimiento.setForeground(new Color(0, 0, 128));
+		lblAnalisisDeRendimiento.setFont(new Font("Segoe Print", Font.BOLD, 35));
+		lblAnalisisDeRendimiento.setBounds(10, 513, 413, 63);
+		panelAnalisisRendimiento.add(lblAnalisisDeRendimiento);
+		
+		lbfondoAnalisisRendimiento = new JLabel("");
+		lbfondoAnalisisRendimiento.setBounds(0, 0, 1240, 587);
+		panelAnalisisRendimiento.add(lbfondoAnalisisRendimiento);
+		panelAnalisisRendimiento.setVisible(false);
+		lbfondoAnalisisRendimiento.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoAnalisisRendimiento.getWidth(), lbfondoAnalisisRendimiento.getHeight()));
 		
 		panelCreacionesJson = new Panel();
 		panelCreacionesJson.setBounds(0, 92, 1240, 587);
@@ -354,9 +412,10 @@ public class InterfazApp extends JFrame {
 		panelNuevaColaboracion.add(btnCrearColaboracion);
 		
 		lbmensajeRetroalimentacion = new JLabel("");
-		lbmensajeRetroalimentacion.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+		lbmensajeRetroalimentacion.setForeground(new Color(46, 139, 87));
+		lbmensajeRetroalimentacion.setFont(new Font("Trebuchet MS", Font.BOLD, 22));
 		lbmensajeRetroalimentacion.setHorizontalAlignment(SwingConstants.CENTER);
-		lbmensajeRetroalimentacion.setBounds(218, 456, 387, 20);
+		lbmensajeRetroalimentacion.setBounds(185, 438, 453, 38);
 		panelNuevaColaboracion.add(lbmensajeRetroalimentacion);
 		
 		rdbtnActivo = new JRadioButton("Nueva");
@@ -391,6 +450,8 @@ public class InterfazApp extends JFrame {
 		panel_CreacionInforme.add(lbl_TituloGenerarInforme);
 		
 		lbl_MensajeInformacionUsuario = new JLabel("");
+		lbl_MensajeInformacionUsuario.setForeground(new Color(46, 139, 87));
+		lbl_MensajeInformacionUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_MensajeInformacionUsuario.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 		lbl_MensajeInformacionUsuario.setBounds(173, 329, 480, 87);
 		panel_CreacionInforme.add(lbl_MensajeInformacionUsuario);
@@ -418,6 +479,10 @@ public class InterfazApp extends JFrame {
 		lbfondoCrearColaboracionJson.setBounds(0, 0, 1240, 587);
 		panelCreacionesJson.add(lbfondoCrearColaboracionJson);
 		lbfondoCrearColaboracionJson.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoCrearColaboracionJson.getWidth(), lbfondoCrearColaboracionJson.getHeight()));
+		
+		label = new JLabel("New label");
+		label.setBounds(0, 0, 46, 14);
+		panelCreacionesJson.add(label);
 		
 		panelColaboracionesCsv = new JPanel();
 		panelColaboracionesCsv.setBounds(0, 92, 1240, 587);
@@ -1038,10 +1103,14 @@ public class InterfazApp extends JFrame {
 		itemColaboracionesCsv.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		menuCsv.add(itemColaboracionesCsv);
 		
-		menuContenido = new JMenu("Análisis de contenido");
-		menuContenido.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
-		menuBar.add(menuContenido);
-		menuContenido.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, new Color(255, 215, 0), null, null, null));
+		menuAnalisisComparativo = new JMenu("Análisis de contenido");
+		menuAnalisisComparativo.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
+		menuBar.add(menuAnalisisComparativo);
+		menuAnalisisComparativo.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, new Color(255, 215, 0), null, null, null));
+		
+		itemAnalisis = new JMenuItem("Analisis");
+		itemAnalisis.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		menuAnalisisComparativo.add(itemAnalisis);
 		
 		lbl_Logo = new JLabel("");
 		lbl_Logo.setBounds(10, 11, 111, 70);
@@ -1050,7 +1119,7 @@ public class InterfazApp extends JFrame {
 		
 	}//InterfazApp CONSTRUCTOR
 	
-	private ImageIcon ajustarTamañoImg(String ruta, int ancho, int alto) {
+	public static ImageIcon ajustarTamañoImg(String ruta, int ancho, int alto) {
         ImageIcon imagen = new ImageIcon((ruta));
         Image imagenOriginal = imagen.getImage();
         Image imagenAjustada = imagenOriginal.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);

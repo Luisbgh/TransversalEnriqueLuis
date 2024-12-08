@@ -46,10 +46,12 @@ public class Controlador implements ActionListener, MouseListener {
     //VARIABLES
 	private String plataforma=null;
 	private ArrayList<String>listaCreadores=new ArrayList<String>();
+	private ArrayList<String>listaPlataformas=new ArrayList<String>();
 	private ArrayNode creadores;
 	private ArrayNode colaboraciones;
 	private ArrayNode plataformas;
 	private DefaultListModel modeloColaboraciones=new DefaultListModel();
+	private DefaultListModel modeloAnalisis=new DefaultListModel();
 	private DefaultTableCellRenderer centrar=new DefaultTableCellRenderer();
 	private DefaultTableModel modeloPlataformas = new DefaultTableModel();
 	private DefaultTableModel modeloHistorial = new DefaultTableModel();
@@ -73,8 +75,10 @@ public class Controlador implements ActionListener, MouseListener {
         this.vista.itemGeneracionJson.addActionListener(this);
         this.vista.btnCrearColaboracion.addActionListener(this);
         this.vista.btnGenerarInformeJson.addActionListener(this);
+        this.vista.itemAnalisis.addActionListener(this);
         //MOUSE LISTENERS
         this.vista.listColaboraciones.addMouseListener(this);
+        this.vista.listPlataformas.addMouseListener(this);
         //RELLENO COMBOBOX
         rellenarComboboxCreadoresContenido();
         
@@ -88,6 +92,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelInformacionCreadores.setVisible(true);
 			vista.panelCreacionesJson.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(false);
+			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.lblItemSeleccionado.setText(vista.itemDatos.getText());
 		}///ITEM DATOS
 		if(e.getSource()==vista.combobox_CreadoresContenido) {
@@ -98,6 +103,7 @@ public class Controlador implements ActionListener, MouseListener {
 				vista.separator_3.setVisible(false);
 				vista.combobox_Ámbitos.setVisible(false);
 				vista.panelAmbito.setVisible(false);
+				vista.panelAnalisisRendimiento.setVisible(false);
 				vista.combobox_Ámbitos.setSelectedIndex(0);
 			}else {
 				try {
@@ -111,6 +117,7 @@ public class Controlador implements ActionListener, MouseListener {
 		if(e.getSource()==vista.combobox_Ámbitos) {
 			if(vista.combobox_CreadoresContenido.getSelectedIndex()==0) {
 				vista.panelAmbito.setVisible(false);
+				vista.panelAnalisisRendimiento.setVisible(false);
 			}else {
 				setearCampos();
 				if(vista.combobox_Ámbitos.getSelectedIndex()==1) {
@@ -119,6 +126,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.scrollPaneColaboraciones.setVisible(false);
 					vista.lbTituloList.setVisible(false);
 					vista.btnTwitch.setVisible(true);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.btnInstagram.setVisible(true);
 					vista.btnTiktok.setVisible(true);
 					vista.btnYt.setVisible(true);
@@ -137,6 +145,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.btnInstagram.setVisible(false);
 					vista.btnTiktok.setVisible(false);
 					vista.btnYt.setVisible(false);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.panel_InformacionPlataformas.setVisible(false);
 					vista.scrollPaneColaboraciones.setVisible(false);
 					vista.lbTituloList.setVisible(false);
@@ -154,6 +163,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.btnTwitch.setVisible(false);
 					vista.btnInstagram.setVisible(false);
 					vista.btnTiktok.setVisible(false);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.btnYt.setVisible(false);
 					vista.panelInformacionColaborador.setVisible(true);
 					vista.scrollPane_TablaInformacionMetricas.setVisible(false);
@@ -166,6 +176,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.lbl_TituloÁmbitos.setText("RENDIMIENTO");
 					vista.panel_InformacionPlataformas.setVisible(false);
 					vista.btnTwitch.setVisible(false);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.btnInstagram.setVisible(false);
 					vista.btnTiktok.setVisible(false);
 					vista.btnYt.setVisible(false);
@@ -178,6 +189,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panelAmbito.setVisible(false);
 					vista.panelCreacionesJson.setVisible(false);
 					vista.panelColaboracionesCsv.setVisible(false);
+					vista.panelAnalisisRendimiento.setVisible(false);
 				}//else
 			}//else
 		}//COMBOBOX AMBITOS
@@ -199,17 +211,26 @@ public class Controlador implements ActionListener, MouseListener {
 		if(e.getSource()==vista.itemColaboracionesCsv) {
 			vista.panelBodyPagina.setVisible(false);
 			vista.panelInformacionCreadores.setVisible(false);
+			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(true);
 			vista.lblItemSeleccionadoColaboracionesCsv.setText(vista.itemColaboracionesCsv.getText());
 		}///ITEM DATOS
 		
 		if(e.getSource()==vista.btn_ReportarColaboracionesCSV) {
-			try {
-				funcionalidad.generarReporteColaboraciones("files/creadores.json", "exportacionesCSV/reporteColaboraciones.csv");
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}//catch
-			vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("REPORTE DE COLABORACIONES REALIZADO");
+			String ruta="exportacionesCSV/reporteColaboraciones.csv";
+			File archivo=new File(ruta);
+			if(archivo.exists()) {
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("EL FICHERO YA EXISTE");
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(Color.RED);
+			}else {
+				try {
+					funcionalidad.generarReporteColaboraciones("files/creadores.json", ruta);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}//catch
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("REPORTE DE COLABORACIONES REALIZADO");
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(new Color(46, 139, 87));
+			}//else
 		}//if
 		
 		if(e.getSource()==vista.btn_ExportacionesColaboradoresCsv) {
@@ -220,6 +241,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelBodyPagina.setVisible(false);
 			vista.panelInformacionCreadores.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(false);
+			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.panelCreacionesJson.setVisible(true);
 			vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
 		}//if
@@ -227,6 +249,7 @@ public class Controlador implements ActionListener, MouseListener {
 		if(e.getSource()==vista.comboBox_menuGeneracionJson) {
 			if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==0) {
 				vista.panelCreacionesJson.setVisible(true);
+				vista.panelAnalisisRendimiento.setVisible(false);
 				vista.panelCreacionColaboracionJson.setVisible(false);
 				vista.panel_CreacionInforme.setVisible(false);
 				vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
@@ -235,6 +258,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
 					vista.panelCreacionesJson.setVisible(true);
 					vista.panelNuevaColaboracion.setVisible(true);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.panelCreacionColaboracionJson.setVisible(true);
 					vista.panel_CreacionInforme.setVisible(false);
 				}else if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==2){
@@ -242,6 +266,7 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panelCreacionesJson.setVisible(true);
 					vista.panel_CreacionInforme.setVisible(true);
 					vista.panelCreacionColaboracionJson.setVisible(true);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.panelNuevaColaboracion.setVisible(false);
 				}else if(vista.comboBox_menuGeneracionJson.getSelectedIndex()==3){
 					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
@@ -249,12 +274,14 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panelCreacionColaboracionJson.setVisible(false);
 				}else {
 					vista.panelCreacionesJson.setVisible(false);
+					vista.panelAnalisisRendimiento.setVisible(false);
 					vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.comboBox_menuGeneracionJson.getSelectedItem().toString());
 				}//else
 			}//else
 		}//COMBOBOX MENU GENERACION JSON
 		
 		if(e.getSource()==vista.btnCrearColaboracion) {
+			int id=0;
 			if(!vista.textFieldFechaFinal.getText().isBlank() && !vista.textFieldFechaInicio.getText().isBlank() &&
 				!vista.textFieldTematica.getText().isBlank() && !vista.textFieldTipo.getText().isBlank() && 
 				(vista.rdbtnActivo.isSelected() || vista.rdbtnInactivo.isSelected())) {
@@ -268,7 +295,7 @@ public class Controlador implements ActionListener, MouseListener {
 						colaborador=crearColaborador(colaborador);
 						ObjectNode colaboracion=funcionalidad.crearColaboracionJson(colaborador);
 						try {
-							int id=añadirColaboracion(creadores, colaboracion, creador, "files/creadores.json");
+							 id=añadirColaboracion(creadores, colaboracion, creador, "files/creadores.json");
 						} catch (IOException e1) {
 							e1.printStackTrace();
 						}
@@ -279,9 +306,9 @@ public class Controlador implements ActionListener, MouseListener {
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
-						añadirMetrica(metricas, colaborador); 
-						vista.lbmensajeRetroalimentacion.setForeground(Color.BLUE);
-						vista.lbmensajeRetroalimentacion.setText("COLABORACION CREADA");
+						añadirMetrica(metricas, colaborador, id); 
+						vista.lbmensajeRetroalimentacion.setForeground(new Color(46, 139, 87));
+						vista.lbmensajeRetroalimentacion.setText("COLABORACIÓN CREADA");
 					}//else
 			}else {
 				vista.lbmensajeRetroalimentacion.setForeground(Color.RED);
@@ -291,13 +318,36 @@ public class Controlador implements ActionListener, MouseListener {
 		
 		//BOTON INFORME JSON
 		if(e.getSource()==vista.btnGenerarInformeJson) {
-			try {
-				funcionalidad.generarInformeCreadoresJSON("files/creadores.json", "informesJSON/reporte_creadores.json");
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			vista.lbl_MensajeInformacionUsuario.setText("INFORME JSON CREADO");
-		}
+			String ruta="informesJSON/reporte_creadores.json";
+			File archivo=new File(ruta);
+			if(archivo.exists()) {
+				vista.lbl_MensajeInformacionUsuario.setText("EL FICHERO YA EXISTE");
+				vista.lbl_MensajeInformacionUsuario.setForeground(Color.RED);
+			}else {
+				try {
+					funcionalidad.generarInformeCreadoresJSON("files/creadores.json", ruta);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				vista.lbl_MensajeInformacionUsuario.setForeground(new Color(46, 139, 87));
+				vista.lbl_MensajeInformacionUsuario.setText("INFORME JSON CREADO");
+			}//else
+		}//if
+		
+		if(e.getSource()==vista.itemAnalisis) {
+			vista.lblAnalisisDeRendimiento.setText(vista.menuAnalisisComparativo.getText());
+			vista.panelCreacionColaboracionJson.setVisible(false);
+			vista.panelExportacionColaboracionesCsv.setVisible(false);
+			vista.panelInformacionCreadores.setVisible(false);
+			vista.panelBodyPagina.setVisible(false);
+			vista.panelAnalisisRendimiento.setVisible(true);
+			vista.panelCreacionesJson.setVisible(false);
+			//centrarLista
+			DefaultListCellRenderer renderer = (DefaultListCellRenderer) vista.listPlataformas.getCellRenderer();
+			renderer.setHorizontalAlignment(JLabel.CENTER);
+			//RELLENAR LISTA
+			rellenarListaPlataformas();
+		}//if
 		
 	}//ACTION PERFORMED
 	
@@ -317,7 +367,7 @@ public class Controlador implements ActionListener, MouseListener {
 	public void mostrarInformacionCreador() throws Exception {
 		
 		for(JsonNode creador:creadores) {
-			if((creador.get("id").asInt() + " - " +  creador.get("nombre").asText()).equalsIgnoreCase(vista.combobox_CreadoresContenido.getSelectedItem().toString())) {
+			if((creador.get("id").asInt() + " - " +  creador.get("nombre").asText()).equalsIgnoreCase(vista.comboBoxCreador.getSelectedItem().toString())) {
 				 idCreador = creador.get("id").asInt();
 				//PLATAFORMA RENOVADA
 				limpiarTabla(modeloPlataformas, vista.table_InformacionPlataforma);
@@ -345,7 +395,6 @@ public class Controlador implements ActionListener, MouseListener {
 				controlColaboraciones();
 				//PLATAFORMAS
 				plataformas = (ArrayNode) creador.get("plataformas");	
-				
 				//CALCULAR PROMEDIO VISTAS Y ME GUSTAS
 				List<MetricaContenido> metricasDeContenido = funcionalidad.abrirCSV("files/metricas_contenido.csv");
 				
@@ -561,11 +610,11 @@ public class Controlador implements ActionListener, MouseListener {
 		return id;
 	}//añadirColaboracion
 	
-	public void añadirMetrica(List<MetricaContenido> metricas, Colaborador colaborador) {
+	public void añadirMetrica(List<MetricaContenido> metricas, Colaborador colaborador, int id) {
 		
 		MetricaContenido nuevaMetrica=new MetricaContenido();
 		for(MetricaContenido metrica: metricas) {
-			nuevaMetrica.setCreador_id(idCreador);
+			nuevaMetrica.setCreador_id(id);
 			int plataforma=(int)(1+Math.random()*3);
 			if(plataforma==1) {
 				nuevaMetrica.setPlataforma("TikTok");
@@ -576,7 +625,7 @@ public class Controlador implements ActionListener, MouseListener {
 			}else {
 				nuevaMetrica.setPlataforma("Youtube");
 			}//else
-			nuevaMetrica.setContenido(String.valueOf("Contenido " + (int) 1+ Math.random()*100));
+			nuevaMetrica.setContenido("Contenido " + String.valueOf((int)(100+Math.random()*200)));
 			nuevaMetrica.setFecha(colaborador.getFechaInicio());
 			int tipo=(int)(0+Math.random()*2);
 			if(tipo==0) {
@@ -584,21 +633,67 @@ public class Controlador implements ActionListener, MouseListener {
 			}else if(tipo==1) {
 				nuevaMetrica.setTipo("Video");
 			}//else
-			nuevaMetrica.setComentarios((int)(1+ Math.random()*10.000));
-			nuevaMetrica.setCompartidos((int)(1+ Math.random()*10.000));
-			nuevaMetrica.setVistas((int)(1+ Math.random()*10.000));
-			nuevaMetrica.setMe_gusta((int)(1+ Math.random()*10.000));
+			nuevaMetrica.setComentarios((int)(5000+ Math.random()*10000));
+			nuevaMetrica.setCompartidos((int)(5000+ Math.random()*10000));
+			nuevaMetrica.setVistas((int)(5000+ Math.random()*10000));
+			nuevaMetrica.setMe_gusta((int)(5000+ Math.random()*10000));
 			//
 		}//for
 		metricas.add(nuevaMetrica);
-	
+		funcionalidad.crearNuevoCSVMetricas(metricas, "files/metricas_contenido.csv");
 	}//añadirMetrica
+	
+	public void rellenarListaPlataformas() {
+		
+		for(JsonNode creador: creadores) {
+			ArrayNode plataformas=(ArrayNode) creador.get("plataformas");
+			for(JsonNode plataforma: plataformas) {
+				modeloAnalisis.removeAllElements();
+				if(!listaPlataformas.contains(plataforma.get("nombre").asText())) {
+					listaPlataformas.add(plataforma.get("nombre").asText());
+				}//if
+				for(int i=0; i<listaPlataformas.size(); i++) {
+					modeloAnalisis.addElement(listaPlataformas.get(i));
+				}//for
+				vista.listPlataformas.setModel(modeloAnalisis);
+			}//for
+		}//for
+		
+	}//rellenarListaPlataformas
+	
+	public void informacionPlataforma() {
+		for(JsonNode creador: creadores) {
+			ArrayNode plataformas=(ArrayNode) creador.get("plataformas");
+			for(JsonNode plataforma: plataformas) {
+				if(plataforma.get("nombre").asText().equals(vista.listPlataformas.getSelectedValue())) {;
+					switch(plataforma.get("nombre").asText()) {
+					case "Instagram":
+							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/instagram.jpeg", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						break;
+					case "YouTube":
+							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/youtube.png", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						break;
+					case "TikTok":
+							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/tiktok.png", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						break;
+					case "Twitch":
+							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/Twitch.jpg", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						break;
+					}//swtich
+				}//if
+			}//for
+		}//for
+	}//informacionPlataforma
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
 		if(e.getSource()==vista.listColaboraciones) {
 			informacionColaboradores();
+		}//if
+		
+		if(e.getSource()==vista.listPlataformas) {
+			 informacionPlataforma();
 		}//if
 		
 	}//mouseClicked

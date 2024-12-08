@@ -325,7 +325,9 @@ public class Funcionalidad {
 			
 			reporteCreadores.add(creadorReporte);
 		}
-		objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(rutaInformeJSON), reporteCreadores);
+		ObjectNode rootNode=objectMapper.createObjectNode();
+		rootNode.set("Creadores", reporteCreadores);
+		objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(rutaInformeJSON), rootNode);
 	}//FIN GENERAR INFORME CREADORES
 	
 	//EJERCICIO 8
@@ -376,7 +378,18 @@ public class Funcionalidad {
 			e.printStackTrace();
 		}//catch
 	}//crearNuevoCSV
-
-
+	
+	public void crearNuevoCSVMetricas(List<MetricaContenido> metricas, String nuevaRutaCSV){
+		try {
+			FileWriter fw = new FileWriter(nuevaRutaCSV);
+			
+			StatefulBeanToCsv<MetricaContenido> beanToCsv = new StatefulBeanToCsvBuilder<MetricaContenido>(fw).build();
+			beanToCsv.write(metricas);
+			fw.flush();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}//catch
+	}//crearNuevoCSV
 	
 }//FIN FUNCIONALIDAD
