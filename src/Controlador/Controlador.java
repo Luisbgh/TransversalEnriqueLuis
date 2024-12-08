@@ -52,9 +52,11 @@ public class Controlador implements ActionListener, MouseListener {
 	private ArrayNode plataformas;
 	private DefaultListModel modeloColaboraciones=new DefaultListModel();
 	private DefaultListModel modeloAnalisis=new DefaultListModel();
+	private DefaultListModel modeloRendimiento=new DefaultListModel();
 	private DefaultTableCellRenderer centrar=new DefaultTableCellRenderer();
 	private DefaultTableModel modeloPlataformas = new DefaultTableModel();
 	private DefaultTableModel modeloHistorial = new DefaultTableModel();
+	private DefaultTableModel tablaAnalisis=new DefaultTableModel();
 	private int idCreador;
 	private ObjectMapper objectMapper;
 	
@@ -615,16 +617,8 @@ public class Controlador implements ActionListener, MouseListener {
 		MetricaContenido nuevaMetrica=new MetricaContenido();
 		for(MetricaContenido metrica: metricas) {
 			nuevaMetrica.setCreador_id(id);
-			int plataforma=(int)(1+Math.random()*3);
-			if(plataforma==1) {
-				nuevaMetrica.setPlataforma("TikTok");
-			}else if(plataforma==2) {
-				nuevaMetrica.setPlataforma("Twitch");
-			}else if(plataforma==3) {
-				nuevaMetrica.setPlataforma("Instagram");
-			}else {
-				nuevaMetrica.setPlataforma("Youtube");
-			}//else
+			String[]opciones={"TikTok", "Instagram", "Youtube", "Twitch"};
+				nuevaMetrica.setPlataforma(opciones[(int)(Math.random()*opciones.length)]);
 			nuevaMetrica.setContenido("Contenido " + String.valueOf((int)(100+Math.random()*200)));
 			nuevaMetrica.setFecha(colaborador.getFechaInicio());
 			int tipo=(int)(0+Math.random()*2);
@@ -661,29 +655,70 @@ public class Controlador implements ActionListener, MouseListener {
 		
 	}//rellenarListaPlataformas
 	
-	public void informacionPlataforma() {
+	public void informacionPlataforma() throws Exception {
+		
+		String tipo=null;;
 		for(JsonNode creador: creadores) {
 			ArrayNode plataformas=(ArrayNode) creador.get("plataformas");
 			for(JsonNode plataforma: plataformas) {
-				if(plataforma.get("nombre").asText().equals(vista.listPlataformas.getSelectedValue())) {;
+				if(plataforma.get("nombre").asText().equals(vista.listPlataformas.getSelectedValue())) {
+					vista.listRendimiento.setVisible(true);
+					vista.separator_9.setVisible(true);
+					vista.lblRendimiento.setVisible(true);
 					switch(plataforma.get("nombre").asText()) {
 					case "Instagram":
-							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/instagram.jpeg", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						tipo="Instagram";
+						vista.lbPlataformaFoto.setIcon(InterfazApp.ajustarTamañoImg("img/instagram.jpeg", vista.lbPlataformaFoto.getWidth(), vista.lbPlataformaFoto.getHeight()));
 						break;
 					case "YouTube":
-							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/youtube.png", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						tipo="YouTube";
+						vista.lbPlataformaFoto.setIcon(InterfazApp.ajustarTamañoImg("img/youtube.png", vista.lbPlataformaFoto.getWidth(), vista.lbPlataformaFoto.getHeight()));
 						break;
 					case "TikTok":
-							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/tiktok.png", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						tipo="TikTok";
+						vista.lbPlataformaFoto.setIcon(InterfazApp.ajustarTamañoImg("img/tiktok.png", vista.lbPlataformaFoto.getWidth(), vista.lbPlataformaFoto.getHeight()));
 						break;
 					case "Twitch":
-							vista.lbfotoPlataforma.setIcon(InterfazApp.ajustarTamañoImg("img/Twitch.jpg", vista.lbfotoPlataforma.getWidth(), vista.lbfotoPlataforma.getHeight()));
+						tipo="Twitch";
+						vista.lbPlataformaFoto.setIcon(InterfazApp.ajustarTamañoImg("img/Twitch.jpg", vista.lbPlataformaFoto.getWidth(), vista.lbPlataformaFoto.getHeight()));
 						break;
 					}//swtich
+					//
+					modeloRendimiento.removeAllElements();
+					compararRendimiento(tipo, "Imagen");
+					compararRendimiento(tipo, "Video");
 				}//if
 			}//for
 		}//for
 	}//informacionPlataforma
+	
+	public void compararRendimiento(String plataforma, String contenido) throws Exception {
+		
+		int promedioVistas=0;
+		int promedioLikes=0;
+		int contador=0;
+		
+		List<MetricaContenido>lista=funcionalidad.abrirCSV("files/metricas_contenido.csv");
+		
+		for(MetricaContenido metrica: lista) {
+			if(metrica.getPlataforma().equalsIgnoreCase(plataforma)) {
+				if(metrica.getTipo().equalsIgnoreCase(contenido)) {
+					promedioVistas=promedioVistas + metrica.getVistas();
+					promedioLikes=promedioLikes + metrica.getMe_gusta();
+					contador++;
+				}//if
+			}//if
+		}//for
+		//
+		if(contador>0) {
+			modeloRendimiento.addElement("Vistas: " + " - " + contenido + " - " + promedioVistas/contador);
+			modeloRendimiento.addElement("Likes: " + " - " + contenido + " - " +  promedioLikes/contador);
+		}//if
+		DefaultListCellRenderer renderer = (DefaultListCellRenderer) vista.listRendimiento.getCellRenderer();
+		renderer.setHorizontalAlignment(JLabel.CENTER);
+		vista.listRendimiento.setModel(modeloRendimiento);
+		
+	}//comprarRendimiento
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -693,7 +728,11 @@ public class Controlador implements ActionListener, MouseListener {
 		}//if
 		
 		if(e.getSource()==vista.listPlataformas) {
-			 informacionPlataforma();
+			 try {
+				informacionPlataforma();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}//catch
 		}//if
 		
 	}//mouseClicked

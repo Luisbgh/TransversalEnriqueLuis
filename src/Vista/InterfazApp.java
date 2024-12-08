@@ -188,12 +188,15 @@ public class InterfazApp extends JFrame {
 	public JLabel lbfondoAnalisisRendimiento;
 	public JLabel lblAnalisisDeRendimiento;
 	public JMenuItem itemAnalisis;
-	public JList listPlataformas;
 	public JLabel lbTituloAnalisis;
 	public JSeparator separator_8;
 	public JLabel lbfotoPlataforma;
-	public JTable tableAnalisis;
-	public JScrollPane scrollPaneAnalisis;
+	public JPanel panelContenedor;
+	public JList listPlataformas;
+	public JList listRendimiento;
+	public JLabel lbPlataformaFoto;
+	public JLabel lblRendimiento;
+	public JSeparator separator_9;
 	
 	/**
 	 * Launch the application.
@@ -236,34 +239,53 @@ public class InterfazApp extends JFrame {
 		panelAnalisisRendimiento.setVisible(false);
 		panelAnalisisRendimiento.setLayout(null);
 		
-		scrollPaneAnalisis = new JScrollPane();
-		scrollPaneAnalisis.setBounds(631, 277, 182, 128);
-		panelAnalisisRendimiento.add(scrollPaneAnalisis);
-		
-		tableAnalisis = new JTable();
-		scrollPaneAnalisis.setViewportView(tableAnalisis);
-		scrollPaneAnalisis.setVisible(false);
-		
-		separator_8 = new JSeparator();
-		separator_8.setForeground(new Color(255, 255, 255));
-		separator_8.setBounds(43, 149, 217, 2);
-		panelAnalisisRendimiento.add(separator_8);
-		
-		lbfotoPlataforma = new JLabel("");
-		lbfotoPlataforma.setBounds(632, 89, 182, 128);
-		panelAnalisisRendimiento.add(lbfotoPlataforma);
-		
-		lbTituloAnalisis = new JLabel("Plataformas");
-		lbTituloAnalisis.setForeground(new Color(0, 0, 128));
-		lbTituloAnalisis.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		lbTituloAnalisis.setBounds(81, 111, 151, 36);
-		panelAnalisisRendimiento.add(lbTituloAnalisis);
+		panelContenedor = new JPanel();
+		panelContenedor.setBounds(109, 93, 1017, 353);
+		panelAnalisisRendimiento.add(panelContenedor);
+		panelContenedor.setVisible(true);
+		panelContenedor.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		panelContenedor.setLayout(null);
 		
 		listPlataformas = new JList();
+		listPlataformas.setBounds(42, 128, 158, 169);
 		listPlataformas.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		listPlataformas.setBounds(43, 159, 219, 147);
-		panelAnalisisRendimiento.add(listPlataformas);
 		listPlataformas.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		panelContenedor.add(listPlataformas);
+		
+		separator_8 = new JSeparator();
+		separator_8.setBounds(42, 102, 158, 2);
+		panelContenedor.add(separator_8);
+		separator_8.setForeground(new Color(255, 255, 255));
+		
+		lbTituloAnalisis = new JLabel("Plataformas");
+		lbTituloAnalisis.setBounds(49, 55, 151, 36);
+		panelContenedor.add(lbTituloAnalisis);
+		lbTituloAnalisis.setForeground(new Color(0, 0, 128));
+		lbTituloAnalisis.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		
+		listRendimiento = new JList();
+		listRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		listRendimiento.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		listRendimiento.setBounds(617, 128, 364, 169);
+		panelContenedor.add(listRendimiento);
+		listRendimiento.setVisible(false);
+		
+		lbPlataformaFoto = new JLabel("");
+		lbPlataformaFoto.setBounds(307, 128, 219, 169);
+		panelContenedor.add(lbPlataformaFoto);
+		
+		lblRendimiento = new JLabel("Rendimiento");
+		lblRendimiento.setForeground(new Color(0, 0, 128));
+		lblRendimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lblRendimiento.setBounds(712, 68, 151, 36);
+		panelContenedor.add(lblRendimiento);
+		lblRendimiento.setVisible(false);
+		
+		separator_9 = new JSeparator();
+		separator_9.setForeground(new Color(255, 255, 255));
+		separator_9.setBounds(690, 102, 189, 2);
+		panelContenedor.add(separator_9);
+		separator_9.setVisible(false);
 		
 		lblAnalisisDeRendimiento = new JLabel("Analisis de rendimiento");
 		lblAnalisisDeRendimiento.setForeground(new Color(0, 0, 128));

@@ -80,6 +80,20 @@
     "fecha_fin" : "7-7-7",
     "tipo" : "Al aire libre",
     "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Marta Sanchez",
+    "tematica" : "ejemplo",
+    "fecha_inicio" : "1-1-1",
+    "fecha_fin" : "1-1-2",
+    "tipo" : "ejemplo",
+    "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Marta Sanchez",
+    "tematica" : "a",
+    "fecha_inicio" : "a",
+    "fecha_fin" : "a",
+    "tipo" : "a",
+    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 2,
