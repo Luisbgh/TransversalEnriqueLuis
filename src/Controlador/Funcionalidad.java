@@ -28,6 +28,7 @@ import com.opencsv.bean.StatefulBeanToCsvBuilder;
 
 import Modelo.Colaboracion;
 import Modelo.Colaborador;
+import Modelo.ExpColaboracion;
 import Modelo.MetricaContenido;
 
 public class Funcionalidad {
@@ -263,17 +264,28 @@ public class Funcionalidad {
 		}//crearNuevoCSV
 	
 	//EJERICIO 4
-	public void exportarColaboracionesCSV(ArrayNode creadores, List<MetricaContenido> misMetricasDeContenido) {
+	public void exportarColaboracionesCSV(ArrayNode creadores) {
 			
+			List<ExpColaboracion>listaColaboraciones=new ArrayList<>();
+			ExpColaboracion exportar=new ExpColaboracion();
 			try {
-				for(JsonNode creador: creadores) {
-					ArrayNode colaboraciones= (ArrayNode) creador.get("colaboraciones");
-					for(JsonNode colaboracion: colaboraciones) {
-						for(MetricaContenido metricas: misMetricasDeContenido){
-							
+			
+				for(JsonNode creador:creadores) {
+					exportar.setCreador(creador.get("nombre").asText());
+					ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
+						for(JsonNode colaboracion: colaboraciones) {
+							exportar.setColaborador(colaboracion.get("colaborador").asText());
 						}//for
-					}//for
+					ArrayNode plataformas=(ArrayNode)creador.get("plataformas");
+						for(JsonNode plataforma:plataformas) {
+							ArrayNode historial=(ArrayNode)creador.get("historico");
+							for(JsonNode registros:historial) {
+								//exportar.setFecha(registro);
+							}//for
+						}//for
+					
 				}//for
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 				throw e;
