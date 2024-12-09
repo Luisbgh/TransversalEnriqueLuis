@@ -544,6 +544,17 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panel_CreacionInforme.setVisible(false);
 					vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 					vista.panelEliminarPublicacionCsv.setVisible(false);
+					vista.textFieldFechaPublicacion.setText("");
+					vista.textFieldTipoPublicacion.setText("");
+					vista.textField_ContenidoPublicacion.setText("");
+					vista.textFieldVistas.setText("");
+					vista.textFieldLikes.setText("");
+					vista.textFieldComentarios.setText("");
+					vista.textFieldCompartidos.setText("");
+					vista.rdbtnPlataforma1.setSelected(false);
+					vista.rdbtnPlataforma2.setSelected(false);
+					vista.rdbtnPlataforma3.setSelected(false);
+					vista.rdbtnPlataforma4.setSelected(false);
 				}else if(vista.comboBoxCsv.getSelectedIndex()==2){
 					vista.lbitemSeleccionadoMenuCsv.setText(vista.comboBoxCsv.getSelectedItem().toString());
 					vista.panelCreacionesJson.setVisible(false);
@@ -557,12 +568,34 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panel_CreacionInforme.setVisible(false);
 					vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 					vista.panelEliminarPublicacionCsv.setVisible(true);
+					vista.textFieldFechaPublicacion.setText("");
+					vista.textFieldTipoPublicacion.setText("");
+					vista.textField_ContenidoPublicacion.setText("");
+					vista.textFieldVistas.setText("");
+					vista.textFieldLikes.setText("");
+					vista.textFieldComentarios.setText("");
+					vista.textFieldCompartidos.setText("");
+					vista.rdbtnPlataforma1.setSelected(false);
+					vista.rdbtnPlataforma2.setSelected(false);
+					vista.rdbtnPlataforma3.setSelected(false);
+					vista.rdbtnPlataforma4.setSelected(false);
 				}else if(vista.comboBoxCsv.getSelectedIndex()==3){
 					vista.lbitemSeleccionadoMenuCsv.setText(vista.comboBoxCsv.getSelectedItem().toString());
 					vista.panelNuevaPublicacionCsv.setVisible(false);
 					vista.panelPublicacionesCSV.setVisible(true);
 					vista.panelOpcionesCsv.setVisible(true);
 					vista.panelEditarCsv.setVisible(true);
+					vista.textFieldFechaPublicacion.setText("");
+					vista.textFieldTipoPublicacion.setText("");
+					vista.textField_ContenidoPublicacion.setText("");
+					vista.textFieldVistas.setText("");
+					vista.textFieldLikes.setText("");
+					vista.textFieldComentarios.setText("");
+					vista.textFieldCompartidos.setText("");
+					vista.rdbtnPlataforma1.setSelected(false);
+					vista.rdbtnPlataforma2.setSelected(false);
+					vista.rdbtnPlataforma3.setSelected(false);
+					vista.rdbtnPlataforma4.setSelected(false);
 				}//else if
 			}//else
 		}//COMBOBOX MENU GENERACION JSON
