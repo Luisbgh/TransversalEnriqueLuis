@@ -481,6 +481,7 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelPublicacionesCSV.setVisible(true);
 			vista.panelConversionesColaboracionesJson.setVisible(false);
 			vista.panelCreacionesJson.setVisible(false);
+			vista.panelOpcionesCsv.setVisible(true);
 			vista.panelBodyPagina.setVisible(false);
 			vista.panelInformacionCreadores.setVisible(false);
 			vista.panelCreacionesJson.setVisible(false);
@@ -494,8 +495,11 @@ public class Controlador implements ActionListener, MouseListener {
 			if(vista.comboBoxCsv.getSelectedIndex()==0) {
 				vista.panelPublicacionesCSV.setVisible(true);
 				vista.panelCreacionesJson.setVisible(false);
+				vista.panelOpcionesCsv.setVisible(false);
 				vista.panelAnalisisRendimiento.setVisible(false);
 				vista.panelCreacionColaboracionJson.setVisible(false);
+				vista.panelColaboracionesCsv.setVisible(false);
+				vista.panelEditarCsv.setVisible(false);
 				vista.panel_CreacionInforme.setVisible(false);
 				vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 				vista.lbl_MensajeInformacionUsuarioRendimiento.setText("");
@@ -511,8 +515,11 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.lbitemSeleccionadoMenuCsv.setText(vista.comboBoxCsv.getSelectedItem().toString());
 					vista.panelCreacionesJson.setVisible(false);
 					vista.panelNuevaColaboracion.setVisible(false);
+					vista.panelOpcionesCsv.setVisible(true);
+					vista.panelEditarCsv.setVisible(false);
+					vista.panelPublicacionesCSV.setVisible(true);
 					vista.panelAnalisisRendimiento.setVisible(false);
-					vista.panelCreacionColaboracionJson.setVisible(true);
+					vista.panelCreacionColaboracionJson.setVisible(false);
 					vista.panelNuevaPublicacionCsv.setVisible(true);
 					vista.panel_CreacionInforme.setVisible(false);
 					vista.panel_CreacionResumenDeRendimiento.setVisible(false);
@@ -522,7 +529,10 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.lbitemSeleccionadoMenuCsv.setText(vista.comboBoxCsv.getSelectedItem().toString());
 					vista.panelCreacionesJson.setVisible(false);
 					vista.panelNuevaColaboracion.setVisible(false);
+					vista.panelPublicacionesCSV.setVisible(true);
 					vista.panelAnalisisRendimiento.setVisible(false);
+					vista.panelOpcionesCsv.setVisible(true);
+					vista.panelEditarCsv.setVisible(false);
 					vista.panelCreacionColaboracionJson.setVisible(false);
 					vista.panelNuevaPublicacionCsv.setVisible(false);
 					vista.panel_CreacionInforme.setVisible(false);
@@ -531,6 +541,9 @@ public class Controlador implements ActionListener, MouseListener {
 				}else if(vista.comboBoxCsv.getSelectedIndex()==3){
 					vista.lbitemSeleccionadoMenuCsv.setText(vista.comboBoxCsv.getSelectedItem().toString());
 					vista.panelNuevaPublicacionCsv.setVisible(false);
+					vista.panelPublicacionesCSV.setVisible(true);
+					vista.panelOpcionesCsv.setVisible(true);
+					vista.panelEditarCsv.setVisible(true);
 				}//else if
 			}//else
 		}//COMBOBOX MENU GENERACION JSON

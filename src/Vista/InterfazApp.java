@@ -261,7 +261,23 @@ public class InterfazApp extends JFrame {
 	public JPanel panelEliminarPublicacionCsv;
 	public JLabel lblEliminarPublicacin;
 	public JPanel panelEditarCsv;
-	public JLabel lblNewLabel;
+	public JList listPublicacionesCsv;
+	public JLabel lbTituloListaPublicaciones;
+	public JSeparator separator_12;
+	public JLabel lblElditarPublicación_1;
+	public JLabel lbPublicacionesMostradas;
+	public JSeparator separator_13;
+	public JList list;
+	public JLabel lbEditarIDCreador;
+	public JLabel lbEditarFecha;
+	public JLabel lbEditarPlataforma;
+	public JLabel lbEditarlContenido;
+	public JTextField textFieldEditarCreador;
+	public JTextField textFieldEditarPlataforma;
+	public JTextField textFieldEditarFecha;
+	public JTextField textFieldEditarContenido;
+	public JLabel lbEditarTipo;
+	public JLabel lblVistas;
 	
 	/**
 	 * Launch the application.
@@ -321,6 +337,99 @@ public class InterfazApp extends JFrame {
 		panelPublicacionesCSV.add(panelOpcionesCsv);
 		panelOpcionesCsv.setLayout(null);
 		
+		panelEditarCsv = new JPanel();
+		panelEditarCsv.setLayout(null);
+		panelEditarCsv.setBounds(10, 8, 811, 487);
+		panelOpcionesCsv.add(panelEditarCsv);
+		
+		lblElditarPublicación_1 = new JLabel("Editar publicación");
+		lblElditarPublicación_1.setForeground(new Color(0, 0, 128));
+		lblElditarPublicación_1.setFont(new Font("Trebuchet MS", Font.BOLD, 26));
+		lblElditarPublicación_1.setBounds(293, 16, 251, 37);
+		panelEditarCsv.add(lblElditarPublicación_1);
+		
+		lbEditarIDCreador = new JLabel("Id Creador");
+		lbEditarIDCreador.setHorizontalAlignment(SwingConstants.CENTER);
+		lbEditarIDCreador.setForeground(new Color(0, 0, 128));
+		lbEditarIDCreador.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lbEditarIDCreador.setBounds(258, 140, 109, 24);
+		panelEditarCsv.add(lbEditarIDCreador);
+		
+		separator_13 = new JSeparator();
+		separator_13.setForeground(new Color(255, 255, 255));
+		separator_13.setBounds(10, 130, 180, 2);
+		panelEditarCsv.add(separator_13);
+		
+		list = new JList();
+		list.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
+		list.setBounds(10, 140, 180, 311);
+		panelEditarCsv.add(list);
+		
+		lbPublicacionesMostradas = new JLabel("Publicaciones");
+		lbPublicacionesMostradas.setHorizontalAlignment(SwingConstants.CENTER);
+		lbPublicacionesMostradas.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lbPublicacionesMostradas.setForeground(new Color(0, 0, 128));
+		lbPublicacionesMostradas.setBounds(30, 90, 151, 37);
+		panelEditarCsv.add(lbPublicacionesMostradas);
+		
+		lbEditarFecha = new JLabel("Fecha");
+		lbEditarFecha.setHorizontalAlignment(SwingConstants.CENTER);
+		lbEditarFecha.setForeground(new Color(0, 0, 128));
+		lbEditarFecha.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lbEditarFecha.setBounds(256, 308, 74, 24);
+		panelEditarCsv.add(lbEditarFecha);
+		
+		lbEditarPlataforma = new JLabel("Plataforma");
+		lbEditarPlataforma.setHorizontalAlignment(SwingConstants.CENTER);
+		lbEditarPlataforma.setForeground(new Color(0, 0, 128));
+		lbEditarPlataforma.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lbEditarPlataforma.setBounds(256, 228, 118, 24);
+		panelEditarCsv.add(lbEditarPlataforma);
+		
+		lbEditarlContenido = new JLabel("Contenido");
+		lbEditarlContenido.setHorizontalAlignment(SwingConstants.CENTER);
+		lbEditarlContenido.setForeground(new Color(0, 0, 128));
+		lbEditarlContenido.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lbEditarlContenido.setBounds(256, 385, 118, 24);
+		panelEditarCsv.add(lbEditarlContenido);
+		
+		textFieldEditarCreador = new JTextField();
+		textFieldEditarCreador.setBounds(256, 187, 118, 20);
+		panelEditarCsv.add(textFieldEditarCreador);
+		textFieldEditarCreador.setColumns(10);
+		
+		textFieldEditarPlataforma = new JTextField();
+		textFieldEditarPlataforma.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldEditarPlataforma.setColumns(10);
+		textFieldEditarPlataforma.setBounds(256, 277, 118, 20);
+		panelEditarCsv.add(textFieldEditarPlataforma);
+		
+		textFieldEditarFecha = new JTextField();
+		textFieldEditarFecha.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldEditarFecha.setColumns(10);
+		textFieldEditarFecha.setBounds(256, 354, 118, 20);
+		panelEditarCsv.add(textFieldEditarFecha);
+		
+		textFieldEditarContenido = new JTextField();
+		textFieldEditarContenido.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldEditarContenido.setColumns(10);
+		textFieldEditarContenido.setBounds(256, 431, 118, 20);
+		panelEditarCsv.add(textFieldEditarContenido);
+		
+		lbEditarTipo = new JLabel("Tipo");
+		lbEditarTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lbEditarTipo.setForeground(new Color(0, 0, 128));
+		lbEditarTipo.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lbEditarTipo.setBounds(478, 143, 67, 24);
+		panelEditarCsv.add(lbEditarTipo);
+		
+		lblVistas = new JLabel("Vistas");
+		lblVistas.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVistas.setForeground(new Color(0, 0, 128));
+		lblVistas.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblVistas.setBounds(478, 205, 67, 24);
+		panelEditarCsv.add(lblVistas);
+		
 		panelEliminarPublicacionCsv = new JPanel();
 		panelEliminarPublicacionCsv.setLayout(null);
 		panelEliminarPublicacionCsv.setBounds(10, 8, 811, 487);
@@ -331,6 +440,22 @@ public class InterfazApp extends JFrame {
 		lblEliminarPublicacin.setFont(new Font("Trebuchet MS", Font.BOLD, 26));
 		lblEliminarPublicacin.setBounds(293, 16, 251, 37);
 		panelEliminarPublicacionCsv.add(lblEliminarPublicacin);
+		
+		separator_12 = new JSeparator();
+		separator_12.setForeground(new Color(255, 255, 255));
+		separator_12.setBounds(10, 171, 217, 2);
+		panelEliminarPublicacionCsv.add(separator_12);
+		
+		lbTituloListaPublicaciones = new JLabel("Publicaciones");
+		lbTituloListaPublicaciones.setHorizontalAlignment(SwingConstants.CENTER);
+		lbTituloListaPublicaciones.setForeground(new Color(0, 0, 128));
+		lbTituloListaPublicaciones.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lbTituloListaPublicaciones.setBounds(10, 123, 206, 37);
+		panelEliminarPublicacionCsv.add(lbTituloListaPublicaciones);
+		
+		listPublicacionesCsv = new JList();
+		listPublicacionesCsv.setBounds(10, 180, 221, 296);
+		panelEliminarPublicacionCsv.add(listPublicacionesCsv);
 		panelEliminarPublicacionCsv.setVisible(false);
 		
 		panelNuevaPublicacionCsv = new Panel();
@@ -526,15 +651,6 @@ public class InterfazApp extends JFrame {
 		textArea.setBounds(560, 413, 218, 63);
 		panelNuevaPublicacionCsv.add(textArea);
 		
-		panelEditarCsv = new JPanel();
-		panelEditarCsv.setLayout(null);
-		panelEditarCsv.setBounds(0, 0, 811, 487);
-		panelOpcionesCsv.add(panelEditarCsv);
-		
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 46, 14);
-		panelEditarCsv.add(lblNewLabel);
-		
 		lbitemSeleccionadoMenuCsv = new JLabel("");
 		lbitemSeleccionadoMenuCsv.setForeground(new Color(0, 0, 128));
 		lbitemSeleccionadoMenuCsv.setFont(new Font("Segoe Print", Font.BOLD, 40));
@@ -561,30 +677,30 @@ public class InterfazApp extends JFrame {
 		
 		progressBarIG = new JProgressBar();
 		progressBarIG.setStringPainted(true);
-		progressBarIG.setBounds(731, 465, 146, 27);
+		progressBarIG.setBounds(780, 465, 322, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG);
 		
 		progressBarTK = new JProgressBar();
 		progressBarTK.setStringPainted(true);
-		progressBarTK.setBounds(1009, 358, 146, 27);
+		progressBarTK.setBounds(780, 356, 322, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK);
 		
 		progressBarTW = new JProgressBar();
 		progressBarTW.setStringPainted(true);
-		progressBarTW.setBounds(731, 250, 146, 27);
+		progressBarTW.setBounds(780, 250, 322, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW);
 		
 		progressBarYT = new JProgressBar();
 		progressBarYT.setMaximum(100);
 		progressBarYT.setStringPainted(true);
-		progressBarYT.setBounds(731, 115, 146, 27);
+		progressBarYT.setBounds(780, 116, 334, 27);
 		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT);
 		
 		lbcrecimientoFM = new JLabel("TASA CRECIMIENTO SEGUIDORES");
 		lbcrecimientoFM.setHorizontalAlignment(SwingConstants.CENTER);
 		lbcrecimientoFM.setForeground(new Color(0, 0, 0));
 		lbcrecimientoFM.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		lbcrecimientoFM.setBounds(964, 35, 218, 21);
+		lbcrecimientoFM.setBounds(750, 35, 385, 21);
 		panel_AnalisisSeguidoresCrecimiento.add(lbcrecimientoFM);
 		
 		JLabel lbtextoCrecimiento = new JLabel("PLATAFORMA");
