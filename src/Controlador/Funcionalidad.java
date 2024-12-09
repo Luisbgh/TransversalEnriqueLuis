@@ -539,7 +539,7 @@ public class Funcionalidad {
 	}//FIN CALCULAR RESUMEN RENDIMIENTO
 	
 	//EJERCICIO 11
-	public void agregarPublicacionACsv(MetricaContenido publicacion) throws IOException {
+	public void actualizarPublicacionACsv(MetricaContenido publicacion) throws IOException {
 		FileWriter fw = null;
 		
 		try {
@@ -556,10 +556,10 @@ public class Funcionalidad {
 					fw.close();
 				}catch(Exception e) {
 					e.printStackTrace();
-				}
-			}
-		}
-	}
+				}//catch
+			}//if
+		}//finally
+	}//agregarPublicacionesCsv
 	
 	//EJERCICO 12
 	public void convertirColaboraciones(String rutaJSON) throws JsonProcessingException, IOException {
@@ -583,10 +583,11 @@ public class Funcionalidad {
 					conversiones.add(colaborador);
 				}//for
 			}//for
+			//
 			ObjectNode rootNode=mapper.createObjectNode();
 			rootNode.set("Colaboraciones", conversiones);
 			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("informesJSON/colaboraciones.json"), rootNode);
-
+			//
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -606,7 +607,5 @@ public class Funcionalidad {
 			e.printStackTrace();
 		}//catch
 	}//crearNuevoCSVEXPColaboracion
-	
-	
 	
 }//FIN FUNCIONALIDAD

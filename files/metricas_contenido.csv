@@ -100,3 +100,32 @@ creador_id,plataforma,fecha,contenido,tipo,vistas,me_gusta,comentarios,compartid
 2,Instagram,2023-05-16,Contenido 99,imagen,10977,4951,274,327
 43,TikTok,2023-04-22,Contenido 100,video,22816,5400,372,78
 1, Twitch, null, 2134, Enrique, 42000, 31000, 10000, 8000
+5, Twitch, null, Imagen, Informatica, 35000, 101000, 88000, 50000
+1, TikTok, 1-1-1, Contenido 208, Imagen, 5316, 5533, 5907, 13597
+50, TikTok, 12, DBZ, Dragon Ball, 35000, 69000, 36000, 72000
+1, Youtube, 1/12/7, t, g, 52000, 49000, 54000, 30000
+1, Youtube, 4, 4, 4, 67000, 12000, 38000, 70000
+50, Instagram, a, a, a, 46000, 17000, 59000, 95000
+50, TikTok, d, Contenido 115, Imagen, 13446, 13661, 10355, 11689
+50, Instagram, A, Contenido 208, Video, 6832, 10382, 7250, 6819
+4, Instagram, A, Contenido 181, Video, 12628, 12837, 10219, 5240
+4, Instagram, a, Contenido 116, Video, 14933, 13027, 9660, 10614
+8, Instagram, a, Contenido 194, Imagen, 8388, 6653, 8264, 7591
+3, Twitch, dd, Contenido 199, Video, 14593, 13925, 7713, 13848
+6, Youtube, a, Contenido 232, Video, 10130, 7978, 11580, 10332
+5, Youtube, a, a, a, 8000, 43000, 83000, 103000
+5, Youtube, a, a, a, 41000, 53000, 20000, 56000
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+21, TikTok, 2023-09-13, Contenido 9, null, 46712, 5123, 766, 29
+12, TikTok, 2023-09-6, Contenido 1, null, 50147, 4671, 101, 260
+43, YouTube, 2023-07-15, Contenido 6, null, 50999, 1602, 320, 300
+43, YouTube, 2023-07-15, Contenido 6, null, 50999, 1602, 320, 300
+14, Instagram, 2023-05-12, Contenido 9, null, 45811, 7408, 443, 485

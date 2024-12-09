@@ -286,7 +286,10 @@ public class InterfazApp extends JFrame {
 	public JLabel lblEditarComentarios;
 	public JLabel lblEditarCompartidos;
 	public JButton btnCrearPublicacion;
-	private JLabel lblMensajeRetroalimentacionUsuarioPublicacion;
+	public JLabel lblMensajeRetroalimentacionUsuarioPublicacion;
+	public JScrollPane scrollPane;
+	public JLabel lblEditarLikes;
+	public JTextField textFieldEditarLikes;
 	
 	/**
 	 * Launch the application.
@@ -369,10 +372,14 @@ public class InterfazApp extends JFrame {
 		separator_13.setBounds(10, 130, 180, 2);
 		panelEditarCsv.add(separator_13);
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 140, 180, 311);
+		panelEditarCsv.add(scrollPane);
+		
 		list_Publicaciones = new JList();
+		scrollPane.setViewportView(list_Publicaciones);
+		list_Publicaciones.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		list_Publicaciones.setBorder(new LineBorder(new Color(255, 215, 0), 2, true));
-		list_Publicaciones.setBounds(10, 140, 180, 311);
-		panelEditarCsv.add(list_Publicaciones);
 		
 		lbPublicacionesMostradas = new JLabel("Publicaciones");
 		lbPublicacionesMostradas.setHorizontalAlignment(SwingConstants.CENTER);
@@ -381,113 +388,136 @@ public class InterfazApp extends JFrame {
 		lbPublicacionesMostradas.setBounds(30, 90, 151, 37);
 		panelEditarCsv.add(lbPublicacionesMostradas);
 		
-		lbEditarFecha = new JLabel("Fecha");
+		lbEditarFecha = new JLabel("Fecha*");
 		lbEditarFecha.setHorizontalAlignment(SwingConstants.CENTER);
 		lbEditarFecha.setForeground(new Color(0, 0, 128));
 		lbEditarFecha.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-		lbEditarFecha.setBounds(256, 183, 63, 24);
+		lbEditarFecha.setBounds(256, 183, 79, 24);
 		panelEditarCsv.add(lbEditarFecha);
 		
-		lbEditarPlataforma = new JLabel("Plataforma");
+		lbEditarPlataforma = new JLabel("Plataforma*");
 		lbEditarPlataforma.setHorizontalAlignment(SwingConstants.CENTER);
 		lbEditarPlataforma.setForeground(new Color(0, 0, 128));
 		lbEditarPlataforma.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-		lbEditarPlataforma.setBounds(256, 135, 106, 24);
+		lbEditarPlataforma.setBounds(256, 135, 125, 24);
 		panelEditarCsv.add(lbEditarPlataforma);
 		
-		lbEditarContenido = new JLabel("Contenido");
+		lbEditarContenido = new JLabel("Contenido*");
 		lbEditarContenido.setHorizontalAlignment(SwingConstants.CENTER);
 		lbEditarContenido.setForeground(new Color(0, 0, 128));
 		lbEditarContenido.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-		lbEditarContenido.setBounds(256, 237, 96, 24);
+		lbEditarContenido.setBounds(256, 237, 106, 24);
 		panelEditarCsv.add(lbEditarContenido);
 		
 		textFieldEditarCreador = new JTextField();
+		textFieldEditarCreador.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		textFieldEditarCreador.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarCreador.setBounds(378, 95, 118, 20);
 		panelEditarCsv.add(textFieldEditarCreador);
 		textFieldEditarCreador.setColumns(10);
 		
 		textFieldEditarPlataforma = new JTextField();
+		textFieldEditarPlataforma.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarPlataforma.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarPlataforma.setColumns(10);
 		textFieldEditarPlataforma.setBounds(378, 140, 118, 20);
 		panelEditarCsv.add(textFieldEditarPlataforma);
 		
 		textFieldEditarFecha = new JTextField();
+		textFieldEditarFecha.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarFecha.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarFecha.setColumns(10);
 		textFieldEditarFecha.setBounds(378, 188, 118, 20);
 		panelEditarCsv.add(textFieldEditarFecha);
 		
 		textFieldEditarContenido = new JTextField();
+		textFieldEditarContenido.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarContenido.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarContenido.setColumns(10);
 		textFieldEditarContenido.setBounds(378, 242, 118, 20);
 		panelEditarCsv.add(textFieldEditarContenido);
 		
-		lbEditarTipo = new JLabel("Tipo");
+		lbEditarTipo = new JLabel("Tipo*");
 		lbEditarTipo.setHorizontalAlignment(SwingConstants.CENTER);
 		lbEditarTipo.setForeground(new Color(0, 0, 128));
 		lbEditarTipo.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		lbEditarTipo.setBounds(529, 90, 57, 24);
 		panelEditarCsv.add(lbEditarTipo);
 		
-		lblEditarVistas = new JLabel("Vistas");
+		lblEditarVistas = new JLabel("Vistas*");
 		lblEditarVistas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEditarVistas.setForeground(new Color(0, 0, 128));
 		lblEditarVistas.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-		lblEditarVistas.setBounds(539, 135, 57, 24);
+		lblEditarVistas.setBounds(529, 135, 70, 24);
 		panelEditarCsv.add(lblEditarVistas);
 		
-		lblEditarComentarios = new JLabel("Comentarios");
+		lblEditarComentarios = new JLabel("Comentarios*");
 		lblEditarComentarios.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEditarComentarios.setForeground(new Color(0, 0, 128));
 		lblEditarComentarios.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-		lblEditarComentarios.setBounds(529, 183, 133, 24);
+		lblEditarComentarios.setBounds(521, 183, 151, 24);
 		panelEditarCsv.add(lblEditarComentarios);
 		
-		lblEditarCompartidos = new JLabel("Compartidos");
+		lblEditarCompartidos = new JLabel("Compartidos*");
 		lblEditarCompartidos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEditarCompartidos.setForeground(new Color(0, 0, 128));
 		lblEditarCompartidos.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-		lblEditarCompartidos.setBounds(534, 237, 118, 24);
+		lblEditarCompartidos.setBounds(521, 237, 151, 24);
 		panelEditarCsv.add(lblEditarCompartidos);
 		
 		textFieldEditarTipo = new JTextField();
+		textFieldEditarTipo.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarTipo.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarTipo.setColumns(10);
 		textFieldEditarTipo.setBounds(662, 95, 118, 20);
 		panelEditarCsv.add(textFieldEditarTipo);
 		
 		textFieldEditarVistas = new JTextField();
+		textFieldEditarVistas.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarVistas.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarVistas.setColumns(10);
 		textFieldEditarVistas.setBounds(662, 140, 118, 20);
 		panelEditarCsv.add(textFieldEditarVistas);
 		
 		textFieldEditarComentarios = new JTextField();
+		textFieldEditarComentarios.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarComentarios.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarComentarios.setColumns(10);
 		textFieldEditarComentarios.setBounds(662, 188, 118, 20);
 		panelEditarCsv.add(textFieldEditarComentarios);
 		
 		textFieldEditarCompartidos = new JTextField();
+		textFieldEditarCompartidos.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
 		textFieldEditarCompartidos.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEditarCompartidos.setColumns(10);
 		textFieldEditarCompartidos.setBounds(662, 242, 118, 20);
 		panelEditarCsv.add(textFieldEditarCompartidos);
 		
 		btn_EditarPublicacion = new JButton("");
-		btn_EditarPublicacion.setBounds(458, 287, 112, 97);
+		btn_EditarPublicacion.setBounds(458, 350, 112, 97);
 		btn_EditarPublicacion.setIcon(ajustarTamañoImg("img/editar.png", btn_EditarPublicacion.getWidth(), btn_EditarPublicacion.getHeight()));
 		btn_EditarPublicacion.setBackground(new Color(68, 68, 136));
 		panelEditarCsv.add(btn_EditarPublicacion);
 		
-		lblMensajeRetroalimentacionUsuarioPublicacion = new JLabel("HOLA");
+		lblMensajeRetroalimentacionUsuarioPublicacion = new JLabel("");
 		lblMensajeRetroalimentacionUsuarioPublicacion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMensajeRetroalimentacionUsuarioPublicacion.setFont(new Font("Trebuchet MS", Font.BOLD, 24));
-		lblMensajeRetroalimentacionUsuarioPublicacion.setBounds(261, 408, 460, 68);
+		lblMensajeRetroalimentacionUsuarioPublicacion.setBounds(261, 445, 460, 45);
 		panelEditarCsv.add(lblMensajeRetroalimentacionUsuarioPublicacion);
+		
+		lblEditarLikes = new JLabel("Likes*");
+		lblEditarLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEditarLikes.setForeground(new Color(0, 0, 128));
+		lblEditarLikes.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblEditarLikes.setBounds(406, 293, 100, 24);
+		panelEditarCsv.add(lblEditarLikes);
+		
+		textFieldEditarLikes = new JTextField();
+		textFieldEditarLikes.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldEditarLikes.setFont(new Font("Trebuchet MS", Font.BOLD, 12));
+		textFieldEditarLikes.setColumns(10);
+		textFieldEditarLikes.setBounds(505, 297, 118, 20);
+		panelEditarCsv.add(textFieldEditarLikes);
 		
 		panelNuevaPublicacionCsv = new Panel();
 		panelNuevaPublicacionCsv.setBounds(10, 8, 811, 487);
