@@ -712,8 +712,8 @@ public class Controlador implements ActionListener, MouseListener {
 		vista.table_InformacionMetricas.setModel(modeloTabla);
 		
 		TableColumnModel modeloColumnas = vista.table_InformacionMetricas.getColumnModel();
-		modeloColumnas.getColumn(0).setPreferredWidth(130);
-		modeloColumnas.getColumn(1).setPreferredWidth(75);
+		modeloColumnas.getColumn(0).setPreferredWidth(100);
+		modeloColumnas.getColumn(1).setPreferredWidth(110);
 		modeloColumnas.getColumn(2).setPreferredWidth(140);
 		modeloColumnas.getColumn(3).setPreferredWidth(80);
 		modeloColumnas.getColumn(4).setPreferredWidth(75);
@@ -846,7 +846,6 @@ public class Controlador implements ActionListener, MouseListener {
 	}//controlColaboraciones
 	
 	public Colaborador crearColaborador(Colaborador colaborador) {
-		
 		colaborador.setColaborador(vista.comboBoxColadoborador.getSelectedItem().toString());
 		if(vista.rdbtnActivo.isSelected()) {
 			colaborador.setEstado(vista.rdbtnActivo.getText());
@@ -890,7 +889,6 @@ public class Controlador implements ActionListener, MouseListener {
 	}//añadirColaboracion
 	
 	public void añadirMetrica(List<MetricaContenido> metricas, Colaborador colaborador, int id) {
-		
 		MetricaContenido nuevaMetrica=new MetricaContenido();
 		for(MetricaContenido metrica: metricas) {
 			nuevaMetrica.setCreador_id(id);
