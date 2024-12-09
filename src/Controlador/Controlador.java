@@ -594,7 +594,7 @@ public class Controlador implements ActionListener, MouseListener {
 		
 		if(e.getSource()==vista.btn_EditarPublicacion) {
 			try {
-				//controlEdicionCsv();
+				controlEdicionCsv();
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}//catch
@@ -1088,17 +1088,19 @@ public class Controlador implements ActionListener, MouseListener {
 	}//FIN OBTENER PLATAFORMA SELECCIONADA
 	
 	public void controlEdicionCsv() throws Exception {
-		
 		boolean cambios=false;
 		if(!vista.textFieldEditarComentarios.getText().isEmpty() && !vista.textFieldEditarCompartidos.getText().isEmpty() && !vista.textFieldEditarContenido.getText().isEmpty()
 			&& !vista.textFieldEditarCreador.getText().isEmpty() && !vista.textFieldEditarFecha.getText().isEmpty() && !vista.textFieldEditarPlataforma.getText().isEmpty()
 			&& !vista.textFieldEditarTipo.getText().isEmpty() && !vista.textFieldEditarVistas.getText().isEmpty()) {
 				cambios=comprobarCambios();
 				if(cambios) {
-					//editarMetrica();
+					editarMetrica();
 					vista.lblMensajeRetroalimentacionUsuarioPublicacion.setText("MODIFICACION REALIZADA");
 					vista.lblMensajeRetroalimentacionUsuarioPublicacion.setForeground(new Color(46, 137, 87));
-				}//if
+				}else {
+					vista.lblMensajeRetroalimentacionUsuarioPublicacion.setText("CAMBIOS INEXISTENTES");
+					vista.lblMensajeRetroalimentacionUsuarioPublicacion.setForeground(Color.RED);
+				}
 		}else {
 			vista.lblMensajeRetroalimentacionUsuarioPublicacion.setText("RELLENE TODOS LOS CAMPOS");
 			vista.lblMensajeRetroalimentacionUsuarioPublicacion.setForeground(Color.red);
@@ -1151,7 +1153,6 @@ public class Controlador implements ActionListener, MouseListener {
 	}//comprobarCambios
 	
 	public void editarMetrica() throws Exception {
-		
 		List<MetricaContenido>mostrarMetricas=funcionalidad.abrirCSV("files/metricas_contenido.csv");
 		MetricaContenido metricaNueva=new MetricaContenido();
 		for(MetricaContenido metrica: mostrarMetricas) {
