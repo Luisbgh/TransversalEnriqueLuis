@@ -269,17 +269,20 @@ public class Funcionalidad {
 			
 			try {
 				for(JsonNode creador:creadores) {
-					ExpColaboracion exportar=new ExpColaboracion();
-					//
-					exportar.setCreador(creador.get("nombre").asText());
+					String nombreCreador = creador.get("nombre").asText();
 					JsonNode estadisticas=creador.get("estadisticas");
-					exportar.setSeguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
-					exportar.setVisualizaciones(estadisticas.get("promedio_vistas_mensuales").asInt());
-						ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
-						for(JsonNode colaboracion: colaboraciones) {
-							exportar.setColaborador(colaboracion.get("colaborador").asText());
-							exportar.setFecha(colaboracion.get("fecha_inicio").asText());
-							listaColaboraciones.add(exportar);
+					double tasaSeguidores = estadisticas.get("tasa_crecimiento_seguidores").asDouble();
+					int promedioVistasMensuales = estadisticas.get("promedio_vistas_mensuales").asInt();
+					
+					ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
+					for(JsonNode colaboracion: colaboraciones) {
+						ExpColaboracion exportar=new ExpColaboracion();
+						exportar.setCreador(nombreCreador);
+						exportar.setSeguidores(tasaSeguidores);
+						exportar.setVisualizaciones(promedioVistasMensuales);
+						exportar.setColaborador(colaboracion.get("colaborador").asText());
+						exportar.setFecha(colaboracion.get("fecha_inicio").asText());
+						listaColaboraciones.add(exportar);
 					}//for
 				}//for
 				crearNuevoCSVEXPColaboracion(listaColaboraciones, "exportacionesCSV/colaboraciones.csv");
@@ -352,7 +355,7 @@ public class Funcionalidad {
 	}//FIN GENERAR INFORME CREADORES
 	
 	//EJERCICIO 7
-	public void calcularYMostrarTasaCrecimiento(String rutaJSON, int idCreador, JProgressBar progressBarEneroAFebreroIG, JProgressBar progressBarFebreroMarzoIG, JProgressBar progressBarEneroAFebreroTk, JProgressBar progressBarFebreroMarzoTk, JProgressBar progressBarEneroAFebreroTw, JProgressBar progressBarFebreroMarzoTw, JProgressBar progressBarEneroAFebreroYt, JProgressBar progressBarFebreroMarzoYt) throws JsonProcessingException, IOException {
+	public void calcularYMostrarTasaCrecimiento(String rutaJSON, int idCreador, JProgressBar progressBarYt, JProgressBar progressBarTk, JProgressBar progressBarTw, JProgressBar progressBarIg) throws JsonProcessingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode creadores = objectMapper.readTree(new File(rutaJSON));
 		
@@ -382,16 +385,16 @@ public class Funcionalidad {
 					
 					switch(nombrePlataforma) {
 					case "Instagram":
-						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroIG, progressBarFebreroMarzoIG);
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarIg);
 						break;
 					case "TikTok":
-						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroTk, progressBarFebreroMarzoTk);
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarTk);
 						break;
 					case "YouTube":
-						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroYt, progressBarFebreroMarzoYt);
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarYt);
 						break;
 					case "Twitch":
-						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroTw, progressBarFebreroMarzoTw);
+						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarTw);
 						break;
 					}//switch
 				}//for
@@ -400,19 +403,17 @@ public class Funcionalidad {
 		
 	}//FIN CALCULAR Y MOSTRAR TASA DE CRECIMIENTO
 	
-	public void actualizarBarrasProgreso(int seguidoresEnero, int seguidoresFebrero, int seguidoresMarzo, JProgressBar progressBarEneroAFebrero, JProgressBar progressBarFebreroAMarzo) {
-		if(seguidoresEnero>0) {
-			int diferenciaFebrero = seguidoresFebrero - seguidoresEnero;
-			double tasaCrecimientoFebrero = (diferenciaFebrero*100.0)/seguidoresEnero;
-			progressBarEneroAFebrero.setValue((int) tasaCrecimientoFebrero);
-			actualizarColoresProgressBar(progressBarEneroAFebrero);
-		}//if
-		if(seguidoresFebrero>0) {
-			int diferenciaMarzo = seguidoresMarzo - seguidoresFebrero;
-			double tasaCrecimientoMarzo = (diferenciaMarzo*100.0)/seguidoresFebrero;
-			progressBarFebreroAMarzo.setValue((int) tasaCrecimientoMarzo);
-			actualizarColoresProgressBar(progressBarFebreroAMarzo);
-		}//if
+	public void actualizarBarrasProgreso(int seguidoresEnero, int seguidoresFebrero, int seguidoresMarzo, JProgressBar progressBar) {
+		//distanciaRecorrida*100/distanciaCarrera;
+		int totalSeguidores = seguidoresEnero + seguidoresFebrero + seguidoresMarzo;
+		if(seguidoresEnero==0) {
+			progressBar.setValue(0);
+		}else {
+			double tasaCrecimiento = (seguidoresEnero - seguidoresMarzo)*100/totalSeguidores;
+			progressBar.setValue((int) tasaCrecimiento);
+			actualizarColoresProgressBar(progressBar);
+		}
+	
 	}//ACTUALIZAR BARRAS PROGRESO
 	
 	public void actualizarColoresProgressBar(JProgressBar progressBar) {
@@ -537,6 +538,8 @@ public class Funcionalidad {
 		objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File("informesJSON/resumen_rendimiento_creadores.json"), rootNode);
 		
 	}//FIN CALCULAR RESUMEN RENDIMIENTO
+	
+	
 	
 	//EJERCICO 12
 	public void convertirColaboraciones(String rutaJSON) throws JsonProcessingException, IOException {

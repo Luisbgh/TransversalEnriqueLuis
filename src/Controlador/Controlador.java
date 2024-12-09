@@ -465,19 +465,15 @@ public class Controlador implements ActionListener, MouseListener {
 				String creadorSeleccionado = vista.combobox_CreadoresTasaCrecimiento.getSelectedItem().toString();
 				idCreador = Integer.parseInt(creadorSeleccionado.split(" - ") [0]);
 				try {
-					funcionalidad.calcularYMostrarTasaCrecimiento("files/creadores.json", idCreador, vista.progressBarIG_EF, vista.progressBarIG_FM, vista.progressBarTK_EF, vista.progressBarTK_FM, vista.progressBarTW_EF, vista.progressBarTW_FM, vista.progressBarYT_EF, vista.progressBarYT_FM);
+					funcionalidad.calcularYMostrarTasaCrecimiento("files/creadores.json", idCreador, vista.progressBarYT, vista.progressBarTK, vista.progressBarTW, vista.progressBarIG);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}//catch
 			}else {
-				vista.progressBarIG_EF.setValue(0);
-				vista.progressBarIG_FM.setValue(0);
-				vista.progressBarTK_EF.setValue(0);
-				vista.progressBarTK_FM.setValue(0);
-				vista.progressBarTW_EF.setValue(0);
-				vista.progressBarTW_FM.setValue(0);
-				vista.progressBarYT_EF.setValue(0);
-				vista.progressBarYT_FM.setValue(0);
+				vista.progressBarIG.setValue(0);
+				vista.progressBarTW.setValue(0);
+				vista.progressBarTK.setValue(0);
+				vista.progressBarYT.setValue(0);
 			}//else
 		}//if
 		

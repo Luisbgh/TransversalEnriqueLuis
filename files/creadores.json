@@ -543,6 +543,13 @@
     "fecha_fin" : "2023-06-30",
     "tipo" : "Patrocinado",
     "estado" : "Finalizada"
+  }, {
+    "colaborador" : "Carlos Ruiz",
+    "tematica" : "a",
+    "fecha_inicio" : "a",
+    "fecha_fin" : "a",
+    "tipo" : "a",
+    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 8,

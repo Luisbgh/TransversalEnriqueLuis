@@ -216,16 +216,11 @@ public class InterfazApp extends JFrame {
 	public JLabel lbl_ImgTwitch;
 	public JLabel lbl_ImgTikTok;
 	public JLabel lbl_ImgInstagram;
-	public JLabel lbcrecimientoEF;
 	public JLabel lbcrecimientoFM;
-	public JProgressBar progressBarYT_EF;
-	public JProgressBar progressBarYT_FM;
-	public JProgressBar progressBarTW_EF;
-	public JProgressBar progressBarTW_FM;
-	public JProgressBar progressBarTK_EF;
-	public JProgressBar progressBarTK_FM;
-	public JProgressBar progressBarIG_EF;
-	public JProgressBar progressBarIG_FM;
+	public JProgressBar progressBarYT;
+	public JProgressBar progressBarTW;
+	public JProgressBar progressBarTK;
+	public JProgressBar progressBarIG;
 	public JPanel panelPublicacionesCSV;
 	public JLabel lbfondoPublicacionesCSV;
 	public JComboBox comboBoxCsv;
@@ -435,7 +430,7 @@ public class InterfazApp extends JFrame {
 		btnCrearPublicacion.setFont(new Font("Trebuchet MS", Font.BOLD, 30));
 		btnCrearPublicacion.setBackground(new Color(70, 130, 180));
 		btnCrearPublicacion.setBounds(250, 413, 275, 63);
-		btnCrearPublicacion.setBorder(new LineBorder(new Color(255, 215, 0), 3));
+		btnCrearPublicacion.setBorder(new LineBorder(new Color(255, 215, 0), 0));
 		panelNuevaPublicacionCsv.add(btnCrearPublicacion);
 		
 		lbmensajeRetroalimentacionCsv = new JLabel("");
@@ -553,7 +548,7 @@ public class InterfazApp extends JFrame {
 		lbtituloMenuCsv.setBounds(22, 46, 326, 35);
 		panelPublicacionesCSV.add(lbtituloMenuCsv);
 		
-		lbfondoPublicacionesCSV = new JLabel("New label");
+		lbfondoPublicacionesCSV = new JLabel("");
 		lbfondoPublicacionesCSV.setBounds(0, 0, 1240, 587);
 		panelPublicacionesCSV.add(lbfondoPublicacionesCSV);
 		lbfondoPublicacionesCSV.setIcon(ajustarTamañoImg("img/fondoInicioApp.jpg", lbfondoPublicacionesCSV.getWidth(), lbfondoPublicacionesCSV.getHeight()));
@@ -564,62 +559,35 @@ public class InterfazApp extends JFrame {
 		panel_AnalisisSeguidoresCrecimiento.setLayout(null);
 		panel_AnalisisSeguidoresCrecimiento.setVisible(false);
 		
-		progressBarIG_EF = new JProgressBar();
-		progressBarIG_EF.setStringPainted(true);
-		progressBarIG_EF.setBounds(731, 465, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG_EF);
+		progressBarIG = new JProgressBar();
+		progressBarIG.setStringPainted(true);
+		progressBarIG.setBounds(731, 465, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG);
 		
-		progressBarIG_FM = new JProgressBar();
-		progressBarIG_FM.setStringPainted(true);
-		progressBarIG_FM.setBounds(1009, 465, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarIG_FM);
+		progressBarTK = new JProgressBar();
+		progressBarTK.setStringPainted(true);
+		progressBarTK.setBounds(1009, 358, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK);
 		
-		progressBarTK_FM = new JProgressBar();
-		progressBarTK_FM.setStringPainted(true);
-		progressBarTK_FM.setBounds(1009, 358, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK_FM);
+		progressBarTW = new JProgressBar();
+		progressBarTW.setStringPainted(true);
+		progressBarTW.setBounds(731, 250, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW);
 		
-		progressBarTK_EF = new JProgressBar();
-		progressBarTK_EF.setStringPainted(true);
-		progressBarTK_EF.setBounds(731, 358, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarTK_EF);
+		progressBarYT = new JProgressBar();
+		progressBarYT.setMaximum(100);
+		progressBarYT.setStringPainted(true);
+		progressBarYT.setBounds(731, 115, 146, 27);
+		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT);
 		
-		progressBarTW_FM = new JProgressBar();
-		progressBarTW_FM.setStringPainted(true);
-		progressBarTW_FM.setBounds(1009, 250, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW_FM);
-		
-		progressBarTW_EF = new JProgressBar();
-		progressBarTW_EF.setStringPainted(true);
-		progressBarTW_EF.setBounds(731, 250, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarTW_EF);
-		
-		progressBarYT_FM = new JProgressBar();
-		progressBarYT_FM.setStringPainted(true);
-		progressBarYT_FM.setBounds(1009, 115, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT_FM);
-		
-		progressBarYT_EF = new JProgressBar();
-		progressBarYT_EF.setMaximum(100);
-		progressBarYT_EF.setStringPainted(true);
-		progressBarYT_EF.setBounds(731, 115, 146, 27);
-		panel_AnalisisSeguidoresCrecimiento.add(progressBarYT_EF);
-		
-		lbcrecimientoFM = new JLabel("FEBRERO-MARZO");
+		lbcrecimientoFM = new JLabel("TASA CRECIMIENTO SEGUIDORES");
 		lbcrecimientoFM.setHorizontalAlignment(SwingConstants.CENTER);
 		lbcrecimientoFM.setForeground(new Color(0, 0, 0));
 		lbcrecimientoFM.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
 		lbcrecimientoFM.setBounds(964, 35, 218, 21);
 		panel_AnalisisSeguidoresCrecimiento.add(lbcrecimientoFM);
 		
-		lbcrecimientoEF = new JLabel("ENERO-FEBRERO");
-		lbcrecimientoEF.setHorizontalAlignment(SwingConstants.CENTER);
-		lbcrecimientoEF.setForeground(new Color(0, 0, 0));
-		lbcrecimientoEF.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		lbcrecimientoEF.setBounds(698, 35, 218, 21);
-		panel_AnalisisSeguidoresCrecimiento.add(lbcrecimientoEF);
-		
-		JLabel lbtextoCrecimiento = new JLabel("CRECIMIENTO");
+		JLabel lbtextoCrecimiento = new JLabel("PLATAFORMA");
 		lbtextoCrecimiento.setHorizontalAlignment(SwingConstants.CENTER);
 		lbtextoCrecimiento.setForeground(new Color(0, 0, 0));
 		lbtextoCrecimiento.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
