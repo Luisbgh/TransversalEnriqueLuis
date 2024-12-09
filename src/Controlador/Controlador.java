@@ -1117,35 +1117,27 @@ public class Controlador implements ActionListener, MouseListener {
 				//COMPROBAR QUE HAY CAMBIOS
 				if(!String.valueOf(metrica.getComentarios()).equalsIgnoreCase(vista.textFieldEditarComentarios.getText())) {
 					cambios=true;
-					System.out.println("a");
 				}//if
 				if(!String.valueOf(metrica.getCompartidos()).equalsIgnoreCase(vista.textFieldEditarCompartidos.getText())) {
 					cambios=true;
-					System.out.println("b");
 				}//if
 				if(!String.valueOf(metrica.getCreador_id()).equalsIgnoreCase(vista.textFieldEditarCreador.getText())) {
 					cambios=true;
-					System.out.println("c");
 				}//if
 				if(!String.valueOf(metrica.getMe_gusta()).equalsIgnoreCase(vista.textFieldEditarLikes.getText())) {
 					cambios=true;
-					System.out.println("d");
 				}//if
 				if(!String.valueOf(metrica.getVistas()).equalsIgnoreCase(vista.textFieldEditarVistas.getText())) {
 					cambios=true;
-					System.out.println("e");
 				}//if
 				if(!metrica.getContenido().equalsIgnoreCase(vista.textFieldEditarContenido.getText())) {
 					cambios=true;
-					System.out.println("f");
 				}//if
 				if(!metrica.getFecha().equalsIgnoreCase(vista.textFieldEditarFecha.getText())) {
 					cambios=true;
-					System.out.println("g");
 				}//if
 				if(!metrica.getPlataforma().equalsIgnoreCase(vista.textFieldEditarPlataforma.getText())) {
 					cambios=true;
-					System.out.println("h");
 				}//if
 			}//if
 		}//for
