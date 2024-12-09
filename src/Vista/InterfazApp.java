@@ -430,34 +430,6 @@ public class InterfazApp extends JFrame {
 		lblVistas.setBounds(478, 205, 67, 24);
 		panelEditarCsv.add(lblVistas);
 		
-		panelEliminarPublicacionCsv = new JPanel();
-		panelEliminarPublicacionCsv.setLayout(null);
-		panelEliminarPublicacionCsv.setBounds(10, 8, 811, 487);
-		panelOpcionesCsv.add(panelEliminarPublicacionCsv);
-		
-		lblEliminarPublicacin = new JLabel("Eliminar publicación");
-		lblEliminarPublicacin.setForeground(new Color(0, 0, 128));
-		lblEliminarPublicacin.setFont(new Font("Trebuchet MS", Font.BOLD, 26));
-		lblEliminarPublicacin.setBounds(293, 16, 251, 37);
-		panelEliminarPublicacionCsv.add(lblEliminarPublicacin);
-		
-		separator_12 = new JSeparator();
-		separator_12.setForeground(new Color(255, 255, 255));
-		separator_12.setBounds(10, 171, 217, 2);
-		panelEliminarPublicacionCsv.add(separator_12);
-		
-		lbTituloListaPublicaciones = new JLabel("Publicaciones");
-		lbTituloListaPublicaciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lbTituloListaPublicaciones.setForeground(new Color(0, 0, 128));
-		lbTituloListaPublicaciones.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
-		lbTituloListaPublicaciones.setBounds(10, 123, 206, 37);
-		panelEliminarPublicacionCsv.add(lbTituloListaPublicaciones);
-		
-		listPublicacionesCsv = new JList();
-		listPublicacionesCsv.setBounds(10, 180, 221, 296);
-		panelEliminarPublicacionCsv.add(listPublicacionesCsv);
-		panelEliminarPublicacionCsv.setVisible(false);
-		
 		panelNuevaPublicacionCsv = new Panel();
 		panelNuevaPublicacionCsv.setBounds(10, 8, 811, 487);
 		panelNuevaPublicacionCsv.setLayout(null);
@@ -618,28 +590,28 @@ public class InterfazApp extends JFrame {
 		textFieldVistas.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldVistas.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		textFieldVistas.setColumns(10);
-		textFieldVistas.setBounds(316, 307, 101, 20);
+		textFieldVistas.setBounds(316, 311, 101, 20);
 		panelNuevaPublicacionCsv.add(textFieldVistas);
 		
 		textFieldLikes = new JTextField();
 		textFieldLikes.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldLikes.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		textFieldLikes.setColumns(10);
-		textFieldLikes.setBounds(316, 354, 101, 20);
+		textFieldLikes.setBounds(316, 357, 101, 20);
 		panelNuevaPublicacionCsv.add(textFieldLikes);
 		
 		textFieldCompartidos = new JTextField();
 		textFieldCompartidos.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldCompartidos.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		textFieldCompartidos.setColumns(10);
-		textFieldCompartidos.setBounds(584, 309, 101, 20);
+		textFieldCompartidos.setBounds(584, 311, 101, 20);
 		panelNuevaPublicacionCsv.add(textFieldCompartidos);
 		
 		textFieldComentarios = new JTextField();
 		textFieldComentarios.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldComentarios.setFont(new Font("Trebuchet MS", Font.BOLD, 15));
 		textFieldComentarios.setColumns(10);
-		textFieldComentarios.setBounds(584, 354, 101, 20);
+		textFieldComentarios.setBounds(584, 357, 101, 20);
 		panelNuevaPublicacionCsv.add(textFieldComentarios);
 		
 		textArea = new JTextArea();
@@ -650,6 +622,34 @@ public class InterfazApp extends JFrame {
 		textArea.setBackground(new Color(240, 240, 240));
 		textArea.setBounds(560, 413, 218, 63);
 		panelNuevaPublicacionCsv.add(textArea);
+		
+		panelEliminarPublicacionCsv = new JPanel();
+		panelEliminarPublicacionCsv.setLayout(null);
+		panelEliminarPublicacionCsv.setBounds(10, 8, 811, 487);
+		panelOpcionesCsv.add(panelEliminarPublicacionCsv);
+		
+		lblEliminarPublicacin = new JLabel("Eliminar publicación");
+		lblEliminarPublicacin.setForeground(new Color(0, 0, 128));
+		lblEliminarPublicacin.setFont(new Font("Trebuchet MS", Font.BOLD, 26));
+		lblEliminarPublicacin.setBounds(293, 16, 251, 37);
+		panelEliminarPublicacionCsv.add(lblEliminarPublicacin);
+		
+		separator_12 = new JSeparator();
+		separator_12.setForeground(new Color(255, 255, 255));
+		separator_12.setBounds(10, 171, 217, 2);
+		panelEliminarPublicacionCsv.add(separator_12);
+		
+		lbTituloListaPublicaciones = new JLabel("Publicaciones");
+		lbTituloListaPublicaciones.setHorizontalAlignment(SwingConstants.CENTER);
+		lbTituloListaPublicaciones.setForeground(new Color(0, 0, 128));
+		lbTituloListaPublicaciones.setFont(new Font("Trebuchet MS", Font.BOLD, 25));
+		lbTituloListaPublicaciones.setBounds(10, 123, 206, 37);
+		panelEliminarPublicacionCsv.add(lbTituloListaPublicaciones);
+		
+		listPublicacionesCsv = new JList();
+		listPublicacionesCsv.setBounds(10, 180, 221, 296);
+		panelEliminarPublicacionCsv.add(listPublicacionesCsv);
+		panelEliminarPublicacionCsv.setVisible(false);
 		
 		lbitemSeleccionadoMenuCsv = new JLabel("");
 		lbitemSeleccionadoMenuCsv.setForeground(new Color(0, 0, 128));

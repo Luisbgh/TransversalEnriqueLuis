@@ -249,47 +249,46 @@ public class Funcionalidad {
 	
 	
 	//EJERCICIO 3
-		public void crearNuevoCSVMetricas(List<MetricaContenido> metricas, String nuevaRutaCSV){
-			try {
-				FileWriter fw = new FileWriter(nuevaRutaCSV);
-				
-				StatefulBeanToCsv<MetricaContenido> beanToCsv = new StatefulBeanToCsvBuilder<MetricaContenido>(fw).build();
-				beanToCsv.write(metricas);
-				fw.flush();
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}//catch
-		}//crearNuevoCSV
+	public void crearNuevoCSVMetricas(List<MetricaContenido> metricas, String nuevaRutaCSV){
+		try {
+			FileWriter fw = new FileWriter(nuevaRutaCSV);
+			
+			StatefulBeanToCsv<MetricaContenido> beanToCsv = new StatefulBeanToCsvBuilder<MetricaContenido>(fw).build();
+			beanToCsv.write(metricas);
+			fw.flush();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}//catch
+	}//CREAR NUEVO CSV METRICAS
 	
 	//EJERICIO 4
 	public void exportarColaboracionesCSV(ArrayNode creadores) {
-			
-			List<ExpColaboracion>listaColaboraciones=new ArrayList<>();
-			
-			try {
-				for(JsonNode creador:creadores) {
-					String nombreCreador = creador.get("nombre").asText();
-					JsonNode estadisticas=creador.get("estadisticas");
-					double tasaSeguidores = estadisticas.get("tasa_crecimiento_seguidores").asDouble();
-					int promedioVistasMensuales = estadisticas.get("promedio_vistas_mensuales").asInt();
-					
-					ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
-					for(JsonNode colaboracion: colaboraciones) {
-						ExpColaboracion exportar=new ExpColaboracion();
-						exportar.setCreador(nombreCreador);
-						exportar.setSeguidores(tasaSeguidores);
-						exportar.setVisualizaciones(promedioVistasMensuales);
-						exportar.setColaborador(colaboracion.get("colaborador").asText());
-						exportar.setFecha(colaboracion.get("fecha_inicio").asText());
-						listaColaboraciones.add(exportar);
-					}//for
+		List<ExpColaboracion>listaColaboraciones=new ArrayList<>();
+		
+		try {
+			for(JsonNode creador:creadores) {
+				String nombreCreador = creador.get("nombre").asText();
+				JsonNode estadisticas=creador.get("estadisticas");
+				double tasaSeguidores = estadisticas.get("tasa_crecimiento_seguidores").asDouble();
+				int promedioVistasMensuales = estadisticas.get("promedio_vistas_mensuales").asInt();
+				
+				ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
+				for(JsonNode colaboracion: colaboraciones) {
+					ExpColaboracion exportar=new ExpColaboracion();
+					exportar.setCreador(nombreCreador);
+					exportar.setSeguidores(tasaSeguidores);
+					exportar.setVisualizaciones(promedioVistasMensuales);
+					exportar.setColaborador(colaboracion.get("colaborador").asText());
+					exportar.setFecha(colaboracion.get("fecha_inicio").asText());
+					listaColaboraciones.add(exportar);
 				}//for
-				crearNuevoCSVEXPColaboracion(listaColaboraciones, "exportacionesCSV/colaboraciones.csv");
-			}catch(Exception e) {
-				e.printStackTrace();
-				throw e;
-			}//catch
+			}//for
+			crearNuevoCSVEXPColaboracion(listaColaboraciones, "exportacionesCSV/colaboraciones.csv");
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}//catch
 			
 	}//exportarColaboracionesCSV
 		
@@ -539,7 +538,28 @@ public class Funcionalidad {
 		
 	}//FIN CALCULAR RESUMEN RENDIMIENTO
 	
-	
+	//EJERCICIO 11
+	public void agregarPublicacionACsv(MetricaContenido publicacion) throws IOException {
+		FileWriter fw = null;
+		
+		try {
+			fw = new FileWriter("files/metricas_contenido.csv", true);
+			
+			String nuevaLinea = publicacion.getCreador_id() + ", " + publicacion.getPlataforma() + ", " + publicacion.getFecha() + ", " + publicacion.getContenido() + ", " + publicacion.getTipo() + ", " + publicacion.getVistas() + ", " + publicacion.getMe_gusta() + ", " + publicacion.getComentarios() + ", " + publicacion.getCompartidos();
+			fw.write(nuevaLinea + "\n");
+			fw.flush();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}finally {
+			if(fw != null) {
+				try {
+					fw.close();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 	
 	//EJERCICO 12
 	public void convertirColaboraciones(String rutaJSON) throws JsonProcessingException, IOException {

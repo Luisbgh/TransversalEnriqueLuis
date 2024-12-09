@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,6 +86,9 @@ public class Controlador implements ActionListener, MouseListener {
         this.vista.itemAnalisisCrecimiento.addActionListener(this);
         this.vista.itemPublicacionesCsv.addActionListener(this);
         this.vista.comboBoxCsv.addActionListener(this);
+        this.vista.btnGenerarInteracciones.addActionListener(this);
+        this.vista.btnCrearPublicacion.addActionListener(this);
+        this.vista.comboBoxCreadorPublicacionCsv.addActionListener(this);
         //MOUSE LISTENERS
         this.vista.listColaboraciones.addMouseListener(this);
         this.vista.listPlataformas.addMouseListener(this);
@@ -276,12 +280,12 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelInformacionCreadores.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(false);
 			vista.panelAnalisisRendimiento.setVisible(false);
-			vista.panelCreacionesJson.setVisible(true);
 			vista.panelConversionesColaboracionesJson.setVisible(false);
+			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
+			vista.panelCreacionesJson.setVisible(true);
+			vista.panelCreacionColaboracionJson.setVisible(true);
 			vista.lbitemMenuJsonGeneracionSeleccionado.setText(vista.itemGeneracionJson.getText());
 			vista.comboBox_menuGeneracionJson.setSelectedIndex(0);
-			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
-			setearCampos();
 		}//if
 		
 		if(e.getSource()==vista.comboBox_menuGeneracionJson) {
@@ -481,13 +485,17 @@ public class Controlador implements ActionListener, MouseListener {
 			vista.panelPublicacionesCSV.setVisible(true);
 			vista.panelConversionesColaboracionesJson.setVisible(false);
 			vista.panelCreacionesJson.setVisible(false);
-			vista.panelOpcionesCsv.setVisible(true);
+			vista.panelOpcionesCsv.setVisible(false);
 			vista.panelBodyPagina.setVisible(false);
 			vista.panelInformacionCreadores.setVisible(false);
 			vista.panelCreacionesJson.setVisible(false);
 			vista.panelColaboracionesCsv.setVisible(false);
 			vista.panelAnalisisRendimiento.setVisible(false);
 			vista.panel_AnalisisSeguidoresCrecimiento.setVisible(false);
+			vista.panelPublicacionesCSV.setVisible(false);
+			vista.lbitemSeleccionadoMenuCsv.setText(vista.itemPublicacionesCsv.getText());
+			vista.comboBoxCsv.setSelectedIndex(0);
+			setearCampos();
 		}//if
 		
 		if(e.getSource()==vista.comboBoxCsv) {
@@ -509,6 +517,18 @@ public class Controlador implements ActionListener, MouseListener {
 				vista.panelNuevaPublicacionCsv.setVisible(false);
 				vista.panelEliminarPublicacionCsv.setVisible(false);
 				vista.lbitemSeleccionadoMenuCsv.setText(vista.itemPublicacionesCsv.getText());
+				vista.comboBoxCsv.setSelectedIndex(0);
+				vista.textFieldFechaPublicacion.setText("");
+				vista.textFieldTipoPublicacion.setText("");
+				vista.textField_ContenidoPublicacion.setText("");
+				vista.textFieldVistas.setText("");
+				vista.textFieldLikes.setText("");
+				vista.textFieldComentarios.setText("");
+				vista.textFieldCompartidos.setText("");
+				vista.rdbtnPlataforma1.setSelected(false);
+				vista.rdbtnPlataforma2.setSelected(false);
+				vista.rdbtnPlataforma3.setSelected(false);
+				vista.rdbtnPlataforma4.setSelected(false);
 			}else {
 				vista.panelPublicacionesCSV.setVisible(true);
 				if(vista.comboBoxCsv.getSelectedIndex()==1) {
@@ -524,7 +544,6 @@ public class Controlador implements ActionListener, MouseListener {
 					vista.panel_CreacionInforme.setVisible(false);
 					vista.panel_CreacionResumenDeRendimiento.setVisible(false);
 					vista.panelEliminarPublicacionCsv.setVisible(false);
-					
 				}else if(vista.comboBoxCsv.getSelectedIndex()==2){
 					vista.lbitemSeleccionadoMenuCsv.setText(vista.comboBoxCsv.getSelectedItem().toString());
 					vista.panelCreacionesJson.setVisible(false);
@@ -547,6 +566,21 @@ public class Controlador implements ActionListener, MouseListener {
 				}//else if
 			}//else
 		}//COMBOBOX MENU GENERACION JSON
+		
+		if(e.getSource()==vista.btnGenerarInteracciones) {
+			vista.textFieldVistas.setText(String.valueOf((int)(5+Math.random()*100)*1000));
+			vista.textFieldLikes.setText(String.valueOf((int)(5+Math.random()*100)*1000));
+			vista.textFieldComentarios.setText(String.valueOf((int)(5+Math.random()*100)*1000));
+			vista.textFieldCompartidos.setText(String.valueOf((int)(5+Math.random()*100)*1000));
+		}
+		
+		if(e.getSource()==vista.btnCrearPublicacion) {
+			try {
+				agregarPublicacion();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 		
 	}//ACTION PERFORMED
 	
@@ -718,6 +752,7 @@ public class Controlador implements ActionListener, MouseListener {
 		vista.lbmensajeRetroalimentacion.setText("");
 		vista.comboBoxCreador.setSelectedIndex(0);
 		vista.comboBoxColadoborador.setSelectedIndex(0);
+		vista.comboBoxCreadorPublicacionCsv.setSelectedIndex(0);
 	}//setearCampos
 	
 	public void mostrarInformacionPlataformas(ArrayNode plataformas, String plataforma, DefaultTableModel modeloPlataformas, DefaultTableModel modeloHistorial) {
@@ -846,8 +881,8 @@ public class Controlador implements ActionListener, MouseListener {
 		funcionalidad.crearNuevoCSVMetricas(metricas, "files/metricas_contenido.csv");
 	}//añadirMetrica
 	
-	public void rellenarListaPlataformas() {
-		
+	//EJERCICIO 9
+	public void rellenarListaPlataformas() {	
 		for(JsonNode creador: creadores) {
 			ArrayNode plataformas=(ArrayNode) creador.get("plataformas");
 			for(JsonNode plataforma: plataformas) {
@@ -865,8 +900,8 @@ public class Controlador implements ActionListener, MouseListener {
 	}//rellenarListaPlataformas
 	
 	public void informacionPlataforma() throws Exception {
+		String tipo=null;
 		
-		String tipo=null;;
 		for(JsonNode creador: creadores) {
 			ArrayNode plataformas=(ArrayNode) creador.get("plataformas");
 			for(JsonNode plataforma: plataformas) {
@@ -902,11 +937,9 @@ public class Controlador implements ActionListener, MouseListener {
 	}//informacionPlataforma
 	
 	public void compararRendimiento(String plataforma, String contenido) throws Exception {
-		
 		int promedioVistas=0;
 		int promedioLikes=0;
 		int contador=0;
-		
 		List<MetricaContenido>lista=funcionalidad.abrirCSV("files/metricas_contenido.csv");
 		
 		for(MetricaContenido metrica: lista) {
@@ -926,8 +959,71 @@ public class Controlador implements ActionListener, MouseListener {
 		DefaultListCellRenderer renderer = (DefaultListCellRenderer) vista.listRendimiento.getCellRenderer();
 		renderer.setHorizontalAlignment(JLabel.CENTER);
 		vista.listRendimiento.setModel(modeloRendimiento);
-		
 	}//comprarRendimiento
+	//FIN EJERCICIO 9
+	
+	//EJERCICIO 11
+	public void agregarPublicacion() throws IOException {
+		String nombreCreador = vista.comboBoxCreadorPublicacionCsv.getSelectedItem().toString();
+		
+		idCreador = Integer.parseInt(nombreCreador.split( " - ")[0]);
+
+		String contenido = vista.textField_ContenidoPublicacion.getText();
+		String tipo = vista.textFieldTipoPublicacion.getText();
+		String fecha = vista.textFieldFechaPublicacion.getText();
+		String meGustas = vista.textFieldLikes.getText();
+		String compartidos = vista.textFieldCompartidos.getText();
+		String comentarios = vista.textFieldComentarios.getText();
+		String vistas = vista.textFieldVistas.getText();
+		
+		boolean plataformaSeleccionada = vista.rdbtnPlataforma1.isSelected() || vista.rdbtnPlataforma2.isSelected() || vista.rdbtnPlataforma3.isSelected() || vista.rdbtnPlataforma4.isSelected();
+		boolean camposRellenados = !contenido.isEmpty() && !tipo.isEmpty() && !fecha.isEmpty() && !meGustas.isEmpty() && !compartidos.isEmpty() && !comentarios.isEmpty() && !vistas.isEmpty();
+		
+		if(!plataformaSeleccionada && !camposRellenados) {
+			vista.textArea.setText("SELECCIONA UNA PLATAFORMA Y RELLENA TODOS LOS CAMPOS");
+			vista.textArea.setForeground(Color.RED);
+		}else if (!plataformaSeleccionada) {
+			vista.textArea.setText("SELECCIONA UNA PLATAFORMA");
+			vista.textArea.setForeground(Color.RED);
+		}else if (!camposRellenados) {
+			vista.textArea.setText("RELLENA TODOS LOS CAMPOS");
+			vista.textArea.setForeground(Color.RED);
+		}else {
+			MetricaContenido nuevaPublicacion = new MetricaContenido();
+			nuevaPublicacion.setContenido(contenido);
+			nuevaPublicacion.setTipo(tipo);
+			nuevaPublicacion.setCreador_id(idCreador);
+			nuevaPublicacion.setMe_gusta(Integer.parseInt(meGustas));
+			nuevaPublicacion.setVistas(Integer.parseInt(vistas));
+			nuevaPublicacion.setComentarios(Integer.parseInt(comentarios));
+			nuevaPublicacion.setCompartidos(Integer.parseInt(compartidos));
+			nuevaPublicacion.setPlataforma(obtenerPlataformaSeleccionada());
+			
+			List<MetricaContenido> publicaciones = new ArrayList<>();
+			publicaciones.add(nuevaPublicacion);
+			
+			funcionalidad.agregarPublicacionACsv(nuevaPublicacion);
+			
+			vista.textArea.setText("PUBLICACIÓN AÑADIDA AL CSV");
+			vista.textArea.setForeground(new Color(46, 139, 87));
+		}
+		
+	}//FIN AGREGAR PUBLICACION
+	
+	public String obtenerPlataformaSeleccionada() {
+		String plataformaSeleccionada = null;
+		if(vista.rdbtnPlataforma1.isSelected()) {
+			plataformaSeleccionada="TikTok";
+		}else if (vista.rdbtnPlataforma2.isSelected()) {
+			plataformaSeleccionada = "Youtube";
+		}else if (vista.rdbtnPlataforma3.isSelected()) {
+			plataformaSeleccionada = "Twitch";
+		}else if (vista.rdbtnPlataforma4.isSelected()) {
+			plataformaSeleccionada = "Instagram";
+		}
+		
+		return plataformaSeleccionada;
+	}//FIN OBTENER PLATAFORMA SELECCIONADA
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
