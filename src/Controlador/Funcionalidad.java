@@ -270,19 +270,17 @@ public class Funcionalidad {
 			try {
 				for(JsonNode creador:creadores) {
 					ExpColaboracion exportar=new ExpColaboracion();
+					//
 					exportar.setCreador(creador.get("nombre").asText());
 					JsonNode estadisticas=creador.get("estadisticas");
 					exportar.setSeguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
 					exportar.setVisualizaciones(estadisticas.get("promedio_vistas_mensuales").asInt());
-						ArrayNode plataformas=(ArrayNode)creador.get("plataformas");
-							for(JsonNode plataforma:plataformas) {
-								exportar.setFecha(plataforma.get("fecha_creacion").asText());
-								ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
-								for(JsonNode colaboracion: colaboraciones) {
-									exportar.setColaborador(colaboracion.get("colaborador").asText());
-							}//for
-						}//for
-						listaColaboraciones.add(exportar);
+						ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
+						for(JsonNode colaboracion: colaboraciones) {
+							exportar.setColaborador(colaboracion.get("colaborador").asText());
+							exportar.setFecha(colaboracion.get("fecha_inicio").asText());
+							listaColaboraciones.add(exportar);
+					}//for
 				}//for
 				crearNuevoCSVEXPColaboracion(listaColaboraciones, "exportacionesCSV/colaboraciones.csv");
 			}catch(Exception e) {

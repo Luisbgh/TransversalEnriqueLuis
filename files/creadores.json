@@ -73,27 +73,6 @@
     "fecha_fin" : "2023-03-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Lucia Garcia",
-    "tematica" : "Piscina",
-    "fecha_inicio" : "3-3-3",
-    "fecha_fin" : "7-7-7",
-    "tipo" : "Al aire libre",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Marta Sanchez",
-    "tematica" : "ejemplo",
-    "fecha_inicio" : "1-1-1",
-    "fecha_fin" : "1-1-2",
-    "tipo" : "ejemplo",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Marta Sanchez",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 2,
@@ -245,20 +224,6 @@
     "fecha_inicio" : "2023-05-01",
     "fecha_fin" : "2023-03-30",
     "tipo" : "Patrocinado",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "aa",
     "estado" : "Finalizada"
   } ]
 }, {
@@ -419,13 +384,6 @@
     "fecha_fin" : "2023-03-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Lucia Garcia",
-    "tematica" : "aa",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 6,
@@ -585,13 +543,6 @@
     "fecha_fin" : "2023-06-30",
     "tipo" : "Patrocinado",
     "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "Q",
-    "fecha_inicio" : "FASD",
-    "fecha_fin" : "AFSD",
-    "tipo" : "SDF",
-    "estado" : "Nueva"
   } ]
 }, {
   "id" : 8,
@@ -4035,40 +3986,5 @@
     "fecha_fin" : "2023-05-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "a",
-    "fecha_inicio" : "asdf",
-    "fecha_fin" : "asdf",
-    "tipo" : "asdf",
-    "estado" : "Nueva"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "Patinaje",
-    "fecha_inicio" : "12-12-11",
-    "fecha_fin" : "12-12-12",
-    "tipo" : "Interactiva",
-    "estado" : "Nueva"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "Futbol",
-    "fecha_inicio" : "1-1-1",
-    "fecha_fin" : "2-2-2",
-    "tipo" : "Activa",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "Stream",
-    "fecha_inicio" : "4-4-4",
-    "fecha_fin" : "5-5-5-",
-    "tipo" : "Stream",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "Basket",
-    "fecha_inicio" : "1-1-1",
-    "fecha_fin" : "2-2-2",
-    "tipo" : "Stream",
-    "estado" : "Finalizada"
   } ]
 } ]
