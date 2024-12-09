@@ -73,13 +73,6 @@
     "fecha_fin" : "2023-03-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Marta Sanchez",
-    "tematica" : "Balonpie",
-    "fecha_inicio" : "1-1-1",
-    "fecha_fin" : "2-2-2",
-    "tipo" : "Champions",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 2,
@@ -232,13 +225,6 @@
     "fecha_fin" : "2023-03-30",
     "tipo" : "Patrocinado",
     "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "d",
-    "fecha_inicio" : "dd",
-    "fecha_fin" : "d",
-    "tipo" : "d",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 4,
@@ -315,20 +301,6 @@
     "fecha_fin" : "2023-04-30",
     "tipo" : "Colaboracion natural",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Lucia Garcia",
-    "tematica" : "A",
-    "fecha_inicio" : "A",
-    "fecha_fin" : "A",
-    "tipo" : "A",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Lucia Garcia",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 5,
@@ -495,13 +467,6 @@
     "fecha_fin" : "2023-01-30",
     "tipo" : "Colaboracion natural",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 7,
@@ -577,13 +542,6 @@
     "fecha_inicio" : "2023-03-01",
     "fecha_fin" : "2023-06-30",
     "tipo" : "Patrocinado",
-    "estado" : "Finalizada"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
     "estado" : "Finalizada"
   } ]
 }, {
@@ -668,13 +626,6 @@
     "fecha_fin" : "2023-08-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Ana Lopez",
-    "tematica" : "a",
-    "fecha_inicio" : "a",
-    "fecha_fin" : "a",
-    "tipo" : "a",
-    "estado" : "Finalizada"
   } ]
 }, {
   "id" : 9,
@@ -4035,19 +3986,5 @@
     "fecha_fin" : "2023-05-30",
     "tipo" : "Patrocinado",
     "estado" : "Activa"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "d",
-    "fecha_inicio" : "d",
-    "fecha_fin" : "d",
-    "tipo" : "d",
-    "estado" : "Nueva"
-  }, {
-    "colaborador" : "Carlos Ruiz",
-    "tematica" : "A",
-    "fecha_inicio" : "A",
-    "fecha_fin" : "A",
-    "tipo" : "A",
-    "estado" : "Finalizada"
   } ]
 } ]
