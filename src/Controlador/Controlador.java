@@ -235,7 +235,7 @@ public class Controlador implements ActionListener, MouseListener {
 		if(e.getSource()==vista.btn_ReportarColaboracionesCSV) {
 			File archivo=new File("exportacionesCSV/reporteColaboraciones.csv");
 			if(archivo.exists()) {
-				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("EL FICHERO YA EXISTE");
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("EL FICHERO DE REPORTE YA EXISTE");
 				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(Color.RED);
 			}else {
 				try {
@@ -249,7 +249,19 @@ public class Controlador implements ActionListener, MouseListener {
 		}//if
 		
 		if(e.getSource()==vista.btn_ExportacionesColaboradoresCsv) {
-			//funcionalidad.exportarColaboracionesCSV(creadores, metricas);
+			File archivo=new File("exportacionesCSV/colaboraciones.csv");
+			if(archivo.exists()) {
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("EL FICHERO DE EXPORTACIÓN YA EXISTE");
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(Color.RED);
+			}else {
+				try {
+					funcionalidad.exportarColaboracionesCSV(creadores);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}//catch
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setText("EXPORTACIÓN DE COLABORACIONES REALIZADO");
+				vista.lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(new Color(46, 139, 87));
+			}//else
 		}//if
 		
 		if(e.getSource()==vista.itemGeneracionJson) {
@@ -446,7 +458,7 @@ public class Controlador implements ActionListener, MouseListener {
 					funcionalidad.calcularYMostrarTasaCrecimiento("files/creadores.json", idCreador, vista.progressBarIG_EF, vista.progressBarIG_FM, vista.progressBarTK_EF, vista.progressBarTK_FM, vista.progressBarTW_EF, vista.progressBarTW_FM, vista.progressBarYT_EF, vista.progressBarYT_FM);
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				}
+				}//catch
 			}else {
 				vista.progressBarIG_EF.setValue(0);
 				vista.progressBarIG_FM.setValue(0);
@@ -456,8 +468,8 @@ public class Controlador implements ActionListener, MouseListener {
 				vista.progressBarTW_FM.setValue(0);
 				vista.progressBarYT_EF.setValue(0);
 				vista.progressBarYT_FM.setValue(0);
-			}
-		}
+			}//else
+		}//if
 		
 	}//ACTION PERFORMED
 	

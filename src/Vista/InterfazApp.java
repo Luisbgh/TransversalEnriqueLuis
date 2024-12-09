@@ -671,7 +671,7 @@ public class InterfazApp extends JFrame {
 		lbl_MensajeInfoUsuarioColaboracionesCSV.setForeground(new Color(37, 128, 28));
 		lbl_MensajeInfoUsuarioColaboracionesCSV.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_MensajeInfoUsuarioColaboracionesCSV.setFont(new Font("Trebuchet MS", Font.BOLD, 32));
-		lbl_MensajeInfoUsuarioColaboracionesCSV.setBounds(280, 11, 705, 76);
+		lbl_MensajeInfoUsuarioColaboracionesCSV.setBounds(184, 11, 886, 76);
 		panelColaboracionesCsv.add(lbl_MensajeInfoUsuarioColaboracionesCSV);
 		
 		panelReporteColaboracionesCsv = new Panel();

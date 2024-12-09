@@ -266,25 +266,25 @@ public class Funcionalidad {
 	public void exportarColaboracionesCSV(ArrayNode creadores) {
 			
 			List<ExpColaboracion>listaColaboraciones=new ArrayList<>();
-			ExpColaboracion exportar=new ExpColaboracion();
-			try {
 			
+			try {
 				for(JsonNode creador:creadores) {
+					ExpColaboracion exportar=new ExpColaboracion();
 					exportar.setCreador(creador.get("nombre").asText());
-					ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
-						for(JsonNode colaboracion: colaboraciones) {
-							exportar.setColaborador(colaboracion.get("colaborador").asText());
-						}//for
-					ArrayNode plataformas=(ArrayNode)creador.get("plataformas");
-						for(JsonNode plataforma:plataformas) {
-							ArrayNode historial=(ArrayNode)creador.get("historico");
-							for(JsonNode registros:historial) {
-								//exportar.setFecha(registro);
+					JsonNode estadisticas=creador.get("estadisticas");
+					exportar.setSeguidores(estadisticas.get("tasa_crecimiento_seguidores").asDouble());
+					exportar.setVisualizaciones(estadisticas.get("promedio_vistas_mensuales").asInt());
+						ArrayNode plataformas=(ArrayNode)creador.get("plataformas");
+							for(JsonNode plataforma:plataformas) {
+								exportar.setFecha(plataforma.get("fecha_creacion").asText());
+								ArrayNode colaboraciones=(ArrayNode)creador.get("colaboraciones");
+								for(JsonNode colaboracion: colaboraciones) {
+									exportar.setColaborador(colaboracion.get("colaborador").asText());
 							}//for
 						}//for
-					
+						listaColaboraciones.add(exportar);
 				}//for
-				
+				crearNuevoCSVEXPColaboracion(listaColaboraciones, "exportacionesCSV/colaboraciones.csv");
 			}catch(Exception e) {
 				e.printStackTrace();
 				throw e;
@@ -378,9 +378,9 @@ public class Funcionalidad {
 								seguidoresFebrero = seguidoresFebrero + nuevosSeguidores;
 							}else if(fecha.getMonthValue()==3) {
 								seguidoresMarzo = seguidoresMarzo + nuevosSeguidores;
-							}
-						}
-					}
+							}//else if
+						}//if
+					}//for
 					
 					switch(nombrePlataforma) {
 					case "Instagram":
@@ -395,28 +395,26 @@ public class Funcionalidad {
 					case "Twitch":
 						actualizarBarrasProgreso(seguidoresEnero, seguidoresFebrero, seguidoresMarzo, progressBarEneroAFebreroTw, progressBarFebreroMarzoTw);
 						break;
-					}
-				}
-			}
-		}
+					}//switch
+				}//for
+			}//if
+		}//for
 		
 	}//FIN CALCULAR Y MOSTRAR TASA DE CRECIMIENTO
 	
 	public void actualizarBarrasProgreso(int seguidoresEnero, int seguidoresFebrero, int seguidoresMarzo, JProgressBar progressBarEneroAFebrero, JProgressBar progressBarFebreroAMarzo) {
-		if(seguidoresEnero >0) {
+		if(seguidoresEnero>0) {
 			int diferenciaFebrero = seguidoresFebrero - seguidoresEnero;
 			double tasaCrecimientoFebrero = (diferenciaFebrero*100.0)/seguidoresEnero;
 			progressBarEneroAFebrero.setValue((int) tasaCrecimientoFebrero);
-			
 			actualizarColoresProgressBar(progressBarEneroAFebrero);
-		}
-		if(seguidoresFebrero >0) {
+		}//if
+		if(seguidoresFebrero>0) {
 			int diferenciaMarzo = seguidoresMarzo - seguidoresFebrero;
 			double tasaCrecimientoMarzo = (diferenciaMarzo*100.0)/seguidoresFebrero;
 			progressBarFebreroAMarzo.setValue((int) tasaCrecimientoMarzo);
-			
 			actualizarColoresProgressBar(progressBarFebreroAMarzo);
-		}
+		}//if
 	}//ACTUALIZAR BARRAS PROGRESO
 	
 	public void actualizarColoresProgressBar(JProgressBar progressBar) {
@@ -428,16 +426,15 @@ public class Funcionalidad {
 			progressBar.setForeground(Color.YELLOW);
 		}else{
 			progressBar.setForeground(Color.GREEN);
-		}
-		
+		}//else
 		if(valor >=0 && valor<=25) {
 			progressBar.setForeground(Color.RED);
 		}else if(valor>25 && valor <=75) {
 			progressBar.setForeground(new Color(228, 160, 16));
 		}else{
 			progressBar.setForeground(new Color(0, 136, 0));
-		}
-	}
+		}//else
+	}//ACTUALIZAR COLORES PROGRESS BAR
 	
 	//EJERCICIO 8
 	public void generarReporteColaboraciones(String rutaJSON, String rutaCSV) throws Exception {	
@@ -574,6 +571,20 @@ public class Funcionalidad {
 			throw e;
 		}//catch
 	}//convertirColaboraciones
+	
+	//CREAR CSV EXPCOLABORACION
+	public void crearNuevoCSVEXPColaboracion(List<ExpColaboracion> colaboraciones, String nuevaRutaCSV){
+		try {
+			FileWriter fw = new FileWriter(nuevaRutaCSV);
+			
+			StatefulBeanToCsv<ExpColaboracion> beanToCsv = new StatefulBeanToCsvBuilder<ExpColaboracion>(fw).build();
+			beanToCsv.write(colaboraciones);
+			fw.flush();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}//catch
+	}//crearNuevoCSVEXPColaboracion
 	
 	
 	

@@ -3,7 +3,8 @@ package Modelo;
 public class ExpColaboracion {
 
 	private String creador, colaborador, fecha;
-	private int visualizaciones, seguidores;
+	private int visualizaciones;
+	private double seguidores;
 	
 	public ExpColaboracion() {
 		
@@ -41,11 +42,11 @@ public class ExpColaboracion {
 		this.visualizaciones = visualizaciones;
 	}
 
-	public int getSeguidores() {
+	public double getSeguidores() {
 		return seguidores;
 	}
 
-	public void setSeguidores(int seguidores) {
+	public void setSeguidores(double seguidores) {
 		this.seguidores = seguidores;
 	}
 
